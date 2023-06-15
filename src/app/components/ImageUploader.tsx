@@ -19,7 +19,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onFileSelect }) => {
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <input
         ref={fileInputRef}
         type="file"

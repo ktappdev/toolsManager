@@ -1,6 +1,14 @@
-import Image from "next/image";
-import ImageUploader from "./components/ImageUploader";
+// import Image from "next/image";
+// import ImageUploader from "./components/ImageUploader";
+// import { Suspense } from "react";
+
+import UserButtonComponent from "./components/UserButtonComponent";
+import AuthStatus from "@/app/components/AuthStatus";
+import FixedBottomNavigation from "./components/FixedBottomNavigation";
+import NavbarAuth from "./components/NavbarAuth";
+import MyAppbar from "@/app/components/MyAppbar";
 import { Suspense } from "react";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   const handleFileSelect = (file: File) => {
@@ -9,12 +17,29 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* <input type="file" accept="image/*" capture="environment" /> */}
-      <h1>Upload an Image</h1>
-      <Suspense fallback={<div>Loading...</div>}>
+    <div className="">
+      <>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </Suspense>
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+        </Suspense>
+      </>
+
+      {/* <MyAppbar /> */}
+      {/* <NavbarAuth /> */}
+      {/* <div className="z-10 fixed bottom-0 left-0 right-0 flex justify-center items-center w-full h-20 bg-gray-100 dark:bg-gray-900 dark:text-gray-100 text-gray-900 text-sm font-medium">
+        <FixedBottomNavigation />
+      </div> */}
+      {/* <Suspense fallback={<div>Loading...</div>}>
         <ImageUploader onFileSelect={handleFileSelect} />
-      </Suspense>
-    </main>
+      </Suspense> */}
+    </div>
   );
 }
