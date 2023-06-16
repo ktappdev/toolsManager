@@ -10,7 +10,7 @@ export default authMiddleware({
       auth.sessionClaims?.email &&
       whiteList.includes(auth.sessionClaims.email.toString())
     ) {
-      console.log("first");
+      console.log("I can impliment my own whitelist here using clerk");
       // signOut();
     }
     // redirect to the dashboard
