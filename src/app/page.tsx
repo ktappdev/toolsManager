@@ -1,14 +1,11 @@
-// import Image from "next/image";
-// import ImageUploader from "./components/ImageUploader";
-// import { Suspense } from "react";
-
-import UserButtonComponent from "./components/UserButtonComponent";
-import AuthStatus from "@/app/components/AuthStatus";
-import FixedBottomNavigation from "./components/FixedBottomNavigation";
-import NavbarAuth from "./components/NavbarAuth";
-import MyAppbar from "@/app/components/MyAppbar";
 import { Suspense } from "react";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignOutButton,
+} from "@clerk/nextjs";
 
 export default function Home() {
   const handleFileSelect = (file: File) => {
@@ -21,7 +18,7 @@ export default function Home() {
       <>
         <Suspense fallback={<div>Loading...</div>}>
           <SignedIn>
-            <UserButton />
+            <SignOutButton />
           </SignedIn>
         </Suspense>
 
