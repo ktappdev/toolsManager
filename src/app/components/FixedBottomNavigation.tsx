@@ -13,7 +13,13 @@ export default function SimpleBottomNavigation() {
   const router = useRouter();
 
   return (
-    <Box sx={{ width: "100%", height: "100%" }}>
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        // paddingBottom: "2rem",
+      }}
+    >
       <BottomNavigation
         showLabels
         // value={value}
@@ -38,11 +44,11 @@ export default function SimpleBottomNavigation() {
           label="Dashboard"
           icon={<DashboardIcon />}
         />
-        <BottomNavigationAction
+        {/* <BottomNavigationAction
           value={"/user"}
           label="username"
           icon={<AccountCircleIcon />}
-        />
+        /> */}
       </BottomNavigation>
     </Box>
   );

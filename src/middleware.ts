@@ -8,9 +8,9 @@ export default authMiddleware({
     // check if auth.email is on the whiteList
     if (
       auth.sessionClaims?.email &&
-      whiteList.includes(auth.sessionClaims.email.toString())
+      !whiteList.includes(auth.sessionClaims.email.toString())
     ) {
-      console.log("I can impliment my own whitelist here using clerk");
+      console.log("I can implement my own whitelist here using clerk");
       // signOut();
     }
     // redirect to the dashboard
