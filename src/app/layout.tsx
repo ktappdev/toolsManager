@@ -9,6 +9,7 @@ import NavbarAuth from "./components/NavbarAuth";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+  manifest: "/manifest.json",
   title: "Tools Inventory Manager",
   description: "Inventory management system",
 };

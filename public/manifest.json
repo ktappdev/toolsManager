@@ -1,0 +1,54 @@
+{
+  "name": "Tools Manager",
+  "short_name": "Tools Manager",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "description": "Tools manager is used to manage tools inventory",
+  "lang": "english",
+  "dir": "auto",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://www.pwabuilder.com/assets/screenshots/screen1.png",
+      "sizes": "2880x1800",
+      "type": "image/png",
+      "description": "A screenshot of the home page"
+    }
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Tools Manager",
+      "url": "/dashboard",
+      "description": "Manage your assets in the most user friendly way possible"
+    }
+  ]
+}
