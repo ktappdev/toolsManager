@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   manifest: "/manifest.json",
+  icon: "/favicon.ico",
   title: "Tools Inventory Manager",
   description: "Inventory management system",
 };
