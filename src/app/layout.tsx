@@ -11,8 +11,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   manifest: "/manifest.json",
   icon: "/favicon.ico",
-  title: "Tools Inventory Manager",
-  description: "Inventory management system",
+  title: "Toolsmaster",
+  description:
+    "Toolmaster is a web app that simplifies workplace tool management. Easily track, assign, and monitor tools, ensuring efficient usage and reducing loss",
+  "theme-color": "#1976d2",
 };
 
 export default function RootLayout({

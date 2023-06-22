@@ -1,4 +1,3 @@
-"use client";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import React, { Suspense } from "react";
 import Skeleton from "react-loading-skeleton";
