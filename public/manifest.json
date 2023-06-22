@@ -1,47 +1,32 @@
 {
-  "name": "Tools Manager",
-  "short_name": "Tools Manager",
-  "start_url": "/dashboard",
-  "display": "standalone",
-  "description": "Tools manager is used to manage tools inventory",
-  "lang": "english",
-  "dir": "auto",
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "orientation": "any",
-  "icons": [
-    {
-      "src": "/manifest-icon-192.maskable.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/manifest-icon-192.maskable.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/manifest-icon-512.maskable.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/manifest-icon-512.maskable.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
-
-  "prefer_related_applications": false,
-  "shortcuts": [
-    {
-      "name": "Tools Manager",
-      "url": "/dashboard",
-      "description": "Manage your assets in the most user friendly way possible"
-    }
-  ]
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Tools Manager",
+    "short_name": "Tools Manager",
+    "description": "Tools Manager App",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
 }
