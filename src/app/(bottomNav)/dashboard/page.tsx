@@ -7,9 +7,16 @@ import CallMadeIcon from "@mui/icons-material/CallMade";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
 import Link from "next/link";
+import isLoggedInServer from "@/app/lib/isLoggedInServer";
+import { createServerClient } from "@/app/lib/supabase-server";
+import { redirect } from "next/navigation";
+
 interface pageProps {}
 
-const page: FC<pageProps> = ({}) => {
+const page: FC<pageProps> = async ({}) => {
+  if ((await isLoggedInServer()) !== true) {
+    redirect("/");
+  }
   return (
     <div className="grid grid-cols-1 justify-start items-center w-full">
       <div className="text-2xl text-center mb-4 w-full">Dashboard</div>

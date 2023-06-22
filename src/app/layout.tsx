@@ -37,7 +37,7 @@ export default function RootLayout({
               {children}
               {/* </div> */}
             </div>
-            <div className="z-10 fixed bottom-0 left-0 right-0 flex justify-center items-center w-full dark:bg-gray-900 dark:text-gray-100 text-gray-900 text-sm font-semibold">
+            <div className="z-10 fixed bottom-0 left-0 right-0 flex justify-center items-center w-full h-24 bg-c-accent-1 dark:bg-gray-900 dark:text-gray-100 text-gray-900 text-sm font-semibold">
               <FixedBottomNavigation />
             </div>
           </div>
