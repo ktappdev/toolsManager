@@ -1,20 +1,28 @@
-import { authMiddleware, useAuth, clerkClient } from "@clerk/nextjs";
-// import { useUser, useClerk } from "@clerk/nextjs";
-// const { signOut } = useClerk();
+import {
+  authMiddleware,
+  useAuth,
+  currentUser,
+  redirectToSignIn,
+} from "@clerk/nextjs";
+import { NextResponse } from "next/server";
+// import { RedirectUrl } from "@clerk/nextjs/dist/types/server";
 
-const whiteList = ["ktad592@gmail.com"];
-// const { userId, sessionId, getToken, isLoaded, isSignedIn, signOut } =
-//   useAuth();
+const whiteList = ["ktad592@gmail.com", "kendabeatmaker@gmail.com"]; //"kendabeatmaker@gmail.com"
 export default authMiddleware({
-  publicRoutes: ["/"],
+  publicRoutes: ["/", "/sign-in", "/sign-up", "/not-authorized"],
   afterAuth(auth, req) {
-    // check if auth.email is on the whiteList
+    if (!auth.userId && !auth.isPublicRoute) {
+      return redirectToSignIn({ returnBackUrl: req.url });
+    }
+    console.log(auth);
     if (
       auth.sessionClaims?.email &&
-      !whiteList.includes(auth.sessionClaims.email.toString())
+      !whiteList.includes(auth.sessionClaims.email.toString()) &&
+      !auth.isPublicRoute
     ) {
       console.log("I can implement my own whitelist here using clerk");
-      // req.cookies.clear();
+      const notAuthorized = new URL("/not-authorized", req.url);
+      return NextResponse.redirect(notAuthorized);
     }
   },
 });

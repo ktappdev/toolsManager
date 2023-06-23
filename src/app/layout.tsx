@@ -1,7 +1,7 @@
 // app/layout.tsx
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { ClerkProvider, SignInButton, UserButton } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import FixedBottomNavigation from "./components/FixedBottomNavigation";
 import MyAppbar from "./components/MyAppbar";
 import NavbarAuth from "./components/NavbarAuth";
