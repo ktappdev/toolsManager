@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import FixedBottomNavigation from "./components/FixedBottomNavigation";
 import MyAppbar from "./components/MyAppbar";
 import NavbarAuth from "./components/NavbarAuth";
+import MyUserButton from "./components/MyUserButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +30,8 @@ export default function RootLayout({
           <div className="max-w-3xl mx-auto">
             <header className="mb-8 z-10 fixed top-0 left-0 right-0 flex justify-end items-center w-full ">
               <div className="flex m-4 ">
-                <NavbarAuth />
+                {/* <NavbarAuth /> */}
+                <MyUserButton />
               </div>
             </header>
             <div className="flex flex-col justify-center items-center mt-16 w-4xl">
