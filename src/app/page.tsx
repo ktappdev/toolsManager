@@ -1,17 +1,14 @@
 import { Suspense } from "react";
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  SignOutButton,
-} from "@clerk/nextjs";
+
+import LoginUi from "@/app/components/LoginUi";
 
 export default function Home() {
-  const handleFileSelect = (file: File) => {
-    // Do something with the selected file
-    console.log(file);
-  };
-
-  return <div className="border-2"></div>;
+  return (
+    <main className="flex min-h-screen px-12 w-full md:w-3/4 flex-col items-center justify-center">
+      <div>
+        <h1>Tools Manager Login</h1>
+      </div>
+      <LoginUi />
+    </main>
+  );
 }

@@ -10,5 +10,6 @@ export default async function isLoggedInServer(): Promise<boolean> {
     console.log("not logged in");
     return false;
   }
+  console.log(session);
   return true;
 }

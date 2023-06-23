@@ -1,26 +1,41 @@
-import { authMiddleware, useAuth, clerkClient } from "@clerk/nextjs";
-// import { useUser, useClerk } from "@clerk/nextjs";
-// const { signOut } = useClerk();
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+// import type { Database } from "@/lib/database.types";
 
-const whiteList = ["ktad592@gmail.com"];
-// const { userId, sessionId, getToken, isLoaded, isSignedIn, signOut } =
-//   useAuth();
-export default authMiddleware({
-  publicRoutes: ["/"],
-  afterAuth(auth, req) {
-    // check if auth.email is on the whiteList
-    if (
-      auth.sessionClaims?.email &&
-      !whiteList.includes(auth.sessionClaims.email.toString())
-    ) {
-      console.log("I can implement my own whitelist here using clerk");
-      // req.cookies.clear();
-    }
-  },
-});
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient<any>({ req, res });
+  // await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+  console.log("middleware running");
 
-// export default authMiddleware();
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
+  // if (!session && req.nextUrl.pathname === "/api/test") {
+  //   console.log("not logged in to use api");
+  //   // return;
+  // }
+  // console.log(session);
+
+  if (session && req.nextUrl.pathname === "/") {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
+  }
+  if (!session && req.nextUrl.pathname.startsWith("/api")) {
+    console.log("not logged in to use api");
+    return;
+  }
+  // // if user is not signed in and the current path is not / redirect the user to /
+  // if (!session && req.nextUrl.pathname !== "/") {
+  //   return NextResponse.redirect(new URL("/", req.url));
+  // }
+
+  return res;
+}
 
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ["/", "/account", "/api"],
 };
