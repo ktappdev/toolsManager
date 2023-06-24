@@ -7,7 +7,7 @@ export default async function page() {
   // console.log(res);
 
   return (
-    <div className="flex flex-col items-center justify-center h-full w-3/4 lg:w-full mt-4 overflow-auto">
+    <div className="flex flex-col items-center justify-center h-full w-full px-4 lg:px-0 mt-4 overflow-auto">
       {/* <div className="text-start mb-4">Add New Item</div> */}
       <NewItemForm />
     </div>
