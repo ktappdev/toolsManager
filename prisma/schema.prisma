@@ -10,13 +10,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Car {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdDate DateTime @default(now())
-  description String?
-  images      String[]
-  videos      String[]
-  links       String[]
-  name        String?
-  tags        String[]
+model Tool {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  toolCreatedDate DateTime @default(now())
+  toolDescription String?
+  toolImage       String?
+  toolName        String
+  categories      String[]
+  serialNumber    String?
+  purchaseDate    DateTime
+  brand           String
+  condition       String
+  accessories     String[]
 }
+
