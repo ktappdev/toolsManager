@@ -10,7 +10,7 @@ import {
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Image from "next/image";
-
+// import Actions from "@/app/lib/Actions";
 interface AddToolFormProps {
   // Define any additional props you may need
 }
@@ -28,8 +28,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     purchaseDate: Date,
     brand: "",
     condition: "",
-    accessories: ",",
-    // Add more fields as needed
+    accessories: "",
   });
   // const handleToolNameChange = (event: ChangeEvent<HTMLInputElement>) => {
   //   setToolName(event.target.value);
@@ -69,7 +68,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Tool Name:", formData, toolImage);
+    console.log("Tool Name:", formData);
+    // Actions(formData);
   };
 
   return (

@@ -10,6 +10,7 @@ import { useClerk, useUser } from "@clerk/nextjs";
 import { SignInButton } from "@clerk/nextjs";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const useStyles = () => {
   const root = {};
@@ -32,6 +33,10 @@ export default function MyUserButton() {
     return <SignInButton />;
   }
 
+  if (!isLoaded) {
+    return <div>Loading..</div>;
+  }
+
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -50,25 +55,29 @@ export default function MyUserButton() {
   };
 
   return (
-    <div>
+    <div id="this" className="h-8">
       <div
         style={{
           display: "flex",
           flexDirection: "row-reverse",
         }}
+        className="h-full"
       >
         <Button
           aria-controls="fade-menu"
           aria-haspopup="true"
           onClick={handleClick}
           startIcon={<ArrowDropDownIcon />}
+          variant="text"
+          className="text-black text-xs"
         >
           {user?.fullName}
-          <Avatar
-            className={"ml-2 shadow-lg"}
+          <Image
+            className={"ml-2 shadow-xl rounded-full w-[24px] h-[24px]"}
             src={user?.imageUrl}
             alt="avatar"
-            classes={classes.avatar}
+            width={24}
+            height={24}
           />
         </Button>
       </div>
