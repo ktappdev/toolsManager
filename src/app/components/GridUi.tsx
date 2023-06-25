@@ -10,30 +10,30 @@ import Link from "next/link";
 const GridUi = () => {
   return (
     <>
-      <div className="grid grid-cols-2 justify-center items-center w-full gap-12 px-8">
+      <div className="grid grid-cols-2 justify-center items-center w-full gap-4 px-8 py-4">
         <Link href="/newitem" prefetch={false}>
-          <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200">
+          <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
             <AddCircleOutlineIcon />
             <div className="text-sm">New Item</div>
           </div>
         </Link>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200">
+        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
           <SearchIcon />
           <div className="text-sm">Find</div>
         </div>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200">
+        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
           <CallReceivedIcon />
           <div className="text-sm">Receive Item</div>
         </div>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200">
+        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
           <CallMadeIcon />
           <div className="text-sm">Lend Item</div>
         </div>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200">
+        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
           <HomeRepairServiceIcon />
           <div className="text-sm">Items Home</div>
         </div>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200">
+        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
           <ForkRightIcon />
           <div className="text-sm">Items Out</div>
         </div>
