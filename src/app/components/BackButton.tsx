@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 const BackButton = () => {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname);
+  // console.log(pathname);
 
   return (
     <>
