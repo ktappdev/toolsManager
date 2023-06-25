@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import FixedBottomNavigation from "./components/FixedBottomNavigation";
 import MyUserButton from "./components/MyUserButton";
+import BackButton from "./components/BackButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,9 @@ export default function RootLayout({
         <body className={inter.className + " antialiased min-h-screen"}>
           <div className="max-w-3xl mx-auto h-screen">
             <header className=" z-10 fixed top-0 left-0 right-0 flex justify-between items-center w-full bg-slate-100 dark:bg-gray-900">
-              <div className="flex m-4 font-extrabold ">Tools Manager v1</div>
+              <div className="flex m-4 font-extrabold ">
+                <BackButton />
+              </div>
               <div className="flex mx-4 ">
                 <MyUserButton />
               </div>
