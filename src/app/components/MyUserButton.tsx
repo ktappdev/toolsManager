@@ -7,13 +7,9 @@ import Fade from "@mui/material/Fade";
 import { Avatar, makeStyles } from "@mui/material/";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useClerk, useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
+import { SignInButton } from "@clerk/nextjs";
 
-// const user = {
-//   avatar:
-//     "https://i.pinimg.com/originals/17/f3/9c/17f39c6f7a4a5457f39dba2368f0d077.jpg",
-//   name: "Kevin Samuels",
-// };
+import { useRouter } from "next/navigation";
 
 const useStyles = () => {
   const root = {};
@@ -33,7 +29,7 @@ export default function MyUserButton() {
   const { signOut } = useClerk();
 
   if (!isLoaded || !isSignedIn) {
-    return null;
+    return <SignInButton />;
   }
 
   const handleClick = (event: any) => {
@@ -41,7 +37,6 @@ export default function MyUserButton() {
   };
 
   const handleClose = () => {
-    router.push("/updates");
     setAnchorEl(null);
   };
   const accountClicked = () => {
@@ -49,8 +44,6 @@ export default function MyUserButton() {
     setAnchorEl(null);
   };
   const logoutClicked = () => {
-    console.log("call logout func");
-
     signOut();
     router.push("/");
     setAnchorEl(null);
@@ -71,7 +64,12 @@ export default function MyUserButton() {
           startIcon={<ArrowDropDownIcon />}
         >
           {user?.fullName}
-          <Avatar className={"ml-2 shadow-lg"} src={user?.imageUrl} />
+          <Avatar
+            className={"ml-2 shadow-lg"}
+            src={user?.imageUrl}
+            alt="avatar"
+            classes={classes.avatar}
+          />
         </Button>
       </div>
 
@@ -83,7 +81,6 @@ export default function MyUserButton() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
         <MenuItem onClick={accountClicked}>My account</MenuItem>
         <MenuItem onClick={logoutClicked}>Logout</MenuItem>
       </Menu>
