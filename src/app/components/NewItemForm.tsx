@@ -10,7 +10,7 @@ import {
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Image from "next/image";
-// import Actions from "@/app/lib/Actions";
+import Actions from "@/app/lib/Actions";
 interface AddToolFormProps {
   // Define any additional props you may need
 }
@@ -20,15 +20,15 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   // const [toolDescription, setToolDescription] = useState<string>("");
   const [formData, setFormData] = useState({
-    toolName: "",
-    toolImage: "",
-    category: "",
-    toolDescription: "",
-    serialNumber: "",
+    toolName: "t",
+    toolImage: "y",
+    category: "h",
+    toolDescription: "g",
+    serialNumber: "yu",
     purchaseDate: Date,
-    brand: "",
-    condition: "",
-    accessories: "",
+    brand: "yh",
+    condition: "j",
+    accessories: "j",
   });
   // const handleToolNameChange = (event: ChangeEvent<HTMLInputElement>) => {
   //   setToolName(event.target.value);
@@ -46,12 +46,15 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     const file = event.target.files?.[0];
     if (file) {
       let imageFromFile = URL.createObjectURL(file);
+      console.log(imageFromFile);
+
       setToolImage(imageFromFile);
       setToolImage(imageFromFile);
       setFormData((prevFormData) => ({
         ...prevFormData,
         ["toolImage"]: imageFromFile,
       }));
+      console.log(imageFromFile);
     }
   };
 
@@ -71,29 +74,45 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     console.log("Tool Name:", formData);
     // Actions(formData);
   };
-
+  //action={Actions} //"/api/upload" // encType="multipart/form-data"
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
-      <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
-        <div className="flex flex-row gap-2 justify-center">
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={handleImageChange}
-            name="photo"
-          />
-          <IconButton
-            onClick={() => fileInputRef.current?.click()}
-            className="gap-2"
-          >
-            <CameraAltOutlinedIcon />
-            <Typography>Add Tool Image</Typography>
-          </IconButton>
-          {toolImage && (
-            <Image src={toolImage} alt="Tool" width={40} height={40} />
-          )}
+      <form
+        action={Actions}
+        method="POST"
+        className="flex w-full flex-col gap-4"
+      >
+        <div className="flex flex-row gap-1 justify-center">
+          <div className="flex flex-col justify-center items-center">
+            <div
+              onClick={() => fileInputRef.current?.click()}
+              className="flex flex-row gap-1 justify-center items-center hover:bg-gray-100 cursor-pointer rounded-md p-2"
+            >
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleImageChange}
+                name="photo"
+              />
+              <IconButton
+
+              // className="gap-2"
+              >
+                <CameraAltOutlinedIcon />
+              </IconButton>
+
+              <Image
+                src={toolImage || "/assets/defaultTool.jpg"}
+                alt="Tool"
+                width={40}
+                height={40}
+                placeholder="empty"
+              />
+            </div>
+            <p className="text-center text-xs"> Add Tool Image</p>
+          </div>
         </div>
 
         <div className="flex flex-row gap-2">
