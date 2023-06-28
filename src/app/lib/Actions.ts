@@ -4,16 +4,28 @@ import imageResizeThenBase64 from "./imageResizeThenBase64";
 import { prisma } from "./prismaClient";
 
 const writeToDb = async (data: any) => {
-  const dbResult = await prisma.tool.create({
+  const dbResult = await prisma.tools.create({
     data: data,
   });
   return dbResult;
 };
 
 export default async function ServerComponent(params: any) {
+  let dbResult;
   const file = params.get("photo") as Blob | null;
   if (!file) {
     console.log("no image provided");
+    let data = {
+      toolName: params.get("toolName"),
+      toolSerialNumber: params.get("toolSerialNumber"),
+      toolBrand: params.get("toolBrand"),
+      toolCategories: params.get("toolCategories"),
+      toolCondition: params.get("toolCondition"),
+      toolAccessories: params.get("toolAccessories"),
+      toolDescription: params.get("toolDescription"),
+    };
+    dbResult = await writeToDb(data);
+    console.log("db result -", dbResult);
   } else {
     const buffer = Buffer.from(await file.arrayBuffer());
 
@@ -22,7 +34,7 @@ export default async function ServerComponent(params: any) {
     c.uploader
       .upload_stream(
         { resource_type: "image", folder: "tools", use_filename: true },
-        (error, result) => {
+        async (error, result) => {
           if (error) {
             console.log(error);
           }
@@ -30,18 +42,18 @@ export default async function ServerComponent(params: any) {
 
           let data = {
             toolName: params.get("toolName"),
-            serialNumber: params.get("toolDescription"),
+            toolSerialNumber: params.get("toolSerialNumber"),
             toolImage: result?.url,
-            brand: params.get("brand"),
-            category: params.get("category"),
-            condition: params.get("condition"),
-            accessories: params.get("accessories"),
-            description: params.get("description"),
+            toolBrand: params.get("toolBrand"),
+            toolCategories: params.get("toolCategories"),
+            toolCondition: params.get("toolCondition"),
+            toolAccessories: params.get("toolAccessories"),
+            toolDescription: params.get("toolDescription"),
           };
-          writeToDb(data);
+          dbResult = await writeToDb(data);
+          console.log("db result -", dbResult);
         }
       )
       .end(smallerFile);
-    console.log("end");
   }
 }

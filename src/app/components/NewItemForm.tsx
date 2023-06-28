@@ -21,14 +21,13 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
   // const [toolDescription, setToolDescription] = useState<string>("");
   const [formData, setFormData] = useState({
     toolName: "t",
-    toolImage: "y",
-    category: "h",
+    toolImage: null,
+    toolCategories: "h",
     toolDescription: "g",
-    serialNumber: "yu",
-    purchaseDate: Date,
-    brand: "yh",
-    condition: "j",
-    accessories: "j",
+    toolSerialNumber: "yu",
+    toolBrand: "yh",
+    toolCondition: "j",
+    toolAccessories: "j",
   });
   // const handleToolNameChange = (event: ChangeEvent<HTMLInputElement>) => {
   //   setToolName(event.target.value);
@@ -50,10 +49,10 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
 
       setToolImage(imageFromFile);
       setToolImage(imageFromFile);
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        ["toolImage"]: imageFromFile,
-      }));
+      // setFormData((prevFormData) => ({
+      //   ...prevFormData,
+      //   ["toolImage"]: imageFromFile,
+      // }));
       console.log(imageFromFile);
     }
   };
@@ -126,8 +125,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           />
           <TextField
             label="Serial Number"
-            name="serialNumber"
-            value={formData.serialNumber}
+            name="toolSerialNumber"
+            value={formData.toolSerialNumber}
             onChange={handleChange}
             required
             className="w-1/2"
@@ -136,8 +135,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
         <div className="flex w-full flex-row gap-2">
           <TextField
             label="Brand"
-            name="brand"
-            value={formData.brand}
+            name="toolBrand"
+            value={formData.toolBrand}
             onChange={handleChange}
             required
             className="w-1/2"
@@ -145,8 +144,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           <div className="flex w-1/2 flex-row gap-2">
             <TextField
               label="Category"
-              name="category"
-              value={formData.category}
+              name="toolCategories"
+              value={formData.toolCategories}
               onChange={handleChange}
               required
               className="w-full"
@@ -165,16 +164,16 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
         <div className="flex flex-row gap-2 justify-evenly">
           <TextField
             label="Condition"
-            name="condition"
-            value={formData.condition}
+            name="toolCondition"
+            value={formData.toolCondition}
             onChange={handleChange}
             required
             className="w-1/2"
           />
           <TextField
             label="Accessories"
-            name="accessories"
-            value={formData.accessories}
+            name="toolAccessories"
+            value={formData.toolAccessories}
             onChange={handleChange}
             required
             className="w-1/2"
@@ -186,9 +185,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           maxRows={4}
           placeholder="Description / Comments"
           value={formData.toolDescription}
-          name="description"
+          name="toolDescription"
           onChange={handleToolDescriptionChange}
-          // style={{ resize: "none" }}
           className="resize-none border-2 border-gray-300 rounded-md p-2"
         />
         <Button type="submit" variant="contained" color="primary">
