@@ -2,19 +2,8 @@
 import { revalidatePath } from "next/cache";
 import { c } from "./cloudinary";
 import imageResizeThenBase64 from "./imageResizeThenBase64";
-import { prisma } from "./prismaClient";
+import prisma from "./prismaClient";
 import { iTool } from "./interfaces";
-// interface iTool {
-//   id?: string;
-//   toolImage?: string | null;
-//   toolName: string | null;
-//   toolSerialNumber?: string | null;
-//   toolBrand?: string | null;
-//   toolCategories?: string[] | null;
-//   toolCondition?: string | null;
-//   toolAccessories?: string[] | null;
-//   toolDescription?: string | null;
-// }
 
 const writeToDb = async (data: any) => {
   const prismaResult = await prisma.tools.create({

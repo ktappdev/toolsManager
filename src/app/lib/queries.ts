@@ -1,5 +1,5 @@
 "use server";
-import { prisma } from "./prismaClient";
+import prisma from "./prismaClient";
 import { iTool } from "./interfaces";
 
 export const getTools = async (): Promise<iTool[]> => {
