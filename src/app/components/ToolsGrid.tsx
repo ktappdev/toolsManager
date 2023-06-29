@@ -9,8 +9,8 @@ import {
 import { getTools } from "@/app/lib/queries";
 import Image from "next/image";
 
-const ToolsGrid = () => {
-  const queryClient = useQueryClient();
+const ToolsGrid = (): JSX.Element => {
+  // const queryClient = useQueryClient();
   // queryClient.invalidateQueries(["tools"]);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["tools"],
@@ -18,6 +18,7 @@ const ToolsGrid = () => {
   });
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error?.toString()}</p>;
+
   return (
     <div className="overflow-auto">
       <ul className="grid grid-cols-4 gap-4">
