@@ -5,9 +5,8 @@ import {
   redirectToSignIn,
 } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-// import { RedirectUrl } from "@clerk/nextjs/dist/types/server";
 
-const whiteList = ["ktad592@gmail.com", "kendabeatmaker@gmail.com"]; //"kendabeatmaker@gmail.com"
+const whiteList = ["ktad592@gmail.com", "kendabeatmaker@gmail.com", "kentaylorappdev@gmail.com"]; //"kendabeatmaker@gmail.com"
 export default authMiddleware({
   publicRoutes: ["/", "/sign-in", "/sign-up", "/not-authorized"],
   afterAuth(auth, req) {

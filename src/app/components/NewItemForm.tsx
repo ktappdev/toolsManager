@@ -10,26 +10,32 @@ import {
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Image from "next/image";
-// import Actions from "@/app/lib/Actions";
+import addToolServerAction from "@/app/lib/addToolServerAction";
+import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
+
 interface AddToolFormProps {
   // Define any additional props you may need
 }
 
 const NewItemForm: React.FC<AddToolFormProps> = () => {
+  const queryClient = useQueryClient();
   const [toolImage, setToolImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [disableButton, setDisableButton] = useState(false);
+  const [buttonText, setButtonText] = useState("Add Tool");
   // const [toolDescription, setToolDescription] = useState<string>("");
   const [formData, setFormData] = useState({
-    toolName: "",
-    toolImage: "",
-    category: "",
-    toolDescription: "",
-    serialNumber: "",
-    purchaseDate: Date,
-    brand: "",
-    condition: "",
-    accessories: "",
+    toolName: "t",
+    toolImage: null,
+    toolCategories: "h",
+    toolDescription: "g",
+    toolSerialNumber: "yu",
+    toolBrand: "yh",
+    toolCondition: "j",
+    toolAccessories: "j",
   });
+  const router = useRouter();
   // const handleToolNameChange = (event: ChangeEvent<HTMLInputElement>) => {
   //   setToolName(event.target.value);
   // };
@@ -46,12 +52,15 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     const file = event.target.files?.[0];
     if (file) {
       let imageFromFile = URL.createObjectURL(file);
+
       setToolImage(imageFromFile);
-      setToolImage(imageFromFile);
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        ["toolImage"]: imageFromFile,
-      }));
+      // setToolImage(imageFromFile);
+
+      // setFormData((prevFormData) => ({
+      //   ...prevFormData,
+      //   ["toolImage"]: imageFromFile,
+      // }));
+      console.log(imageFromFile);
     }
   };
 
@@ -67,33 +76,62 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log("Tool Name:", formData);
-    // Actions(formData);
+    // event.preventDefault();
+    setDisableButton(true);
+    setButtonText("Adding Tool...");
+    setTimeout(function () {
+      queryClient.invalidateQueries(["tools"]);
+      router.push("/mytools");
+    }, 3000);
+    // console.log("Tool Name:", formData);
   };
-
+  //action={Actions} //"/api/upload" // encType="multipart/form-data"
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
-      <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
-        <div className="flex flex-row gap-2 justify-center">
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={handleImageChange}
-            name="photo"
-          />
-          <IconButton
-            onClick={() => fileInputRef.current?.click()}
-            className="gap-2"
-          >
-            <CameraAltOutlinedIcon />
-            <Typography>Add Tool Image</Typography>
-          </IconButton>
-          {toolImage && (
-            <Image src={toolImage} alt="Tool" width={40} height={40} />
-          )}
+      <form
+        action={addToolServerAction}
+        className="flex w-full flex-col gap-4"
+        onSubmit={handleSubmit}
+        // onSubmit={() => {
+        //   setDisableButton(true);
+        //   setButtonText("Adding Tool...");
+        //   setTimeout(function () {
+        //     queryClient.invalidateQueries(["tools"]);
+        //     router.push("/mytools");
+        //   }, 3000);
+        // }}
+      >
+        <div className="flex flex-row gap-1 justify-center">
+          <div className="flex flex-col justify-center items-center">
+            <div
+              onClick={() => fileInputRef.current?.click()}
+              className="flex flex-row gap-1 justify-center items-center hover:bg-gray-100 cursor-pointer rounded-md p-2"
+            >
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleImageChange}
+                name="photo"
+              />
+              <IconButton
+
+              // className="gap-2"
+              >
+                <CameraAltOutlinedIcon />
+              </IconButton>
+
+              <Image
+                src={toolImage || "/assets/defaultTool.jpg"}
+                alt="Tool"
+                width={40}
+                height={40}
+                placeholder="empty"
+              />
+            </div>
+            <p className="text-center text-xs"> Add Tool Image</p>
+          </div>
         </div>
 
         <div className="flex flex-row gap-2">
@@ -107,8 +145,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           />
           <TextField
             label="Serial Number"
-            name="serialNumber"
-            value={formData.serialNumber}
+            name="toolSerialNumber"
+            value={formData.toolSerialNumber}
             onChange={handleChange}
             required
             className="w-1/2"
@@ -117,8 +155,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
         <div className="flex w-full flex-row gap-2">
           <TextField
             label="Brand"
-            name="brand"
-            value={formData.brand}
+            name="toolBrand"
+            value={formData.toolBrand}
             onChange={handleChange}
             required
             className="w-1/2"
@@ -126,8 +164,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           <div className="flex w-1/2 flex-row gap-2">
             <TextField
               label="Category"
-              name="category"
-              value={formData.category}
+              name="toolCategories"
+              value={formData.toolCategories}
               onChange={handleChange}
               required
               className="w-full"
@@ -146,16 +184,16 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
         <div className="flex flex-row gap-2 justify-evenly">
           <TextField
             label="Condition"
-            name="condition"
-            value={formData.condition}
+            name="toolCondition"
+            value={formData.toolCondition}
             onChange={handleChange}
             required
             className="w-1/2"
           />
           <TextField
             label="Accessories"
-            name="accessories"
-            value={formData.accessories}
+            name="toolAccessories"
+            value={formData.toolAccessories}
             onChange={handleChange}
             required
             className="w-1/2"
@@ -167,13 +205,17 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           maxRows={4}
           placeholder="Description / Comments"
           value={formData.toolDescription}
-          name="description"
+          name="toolDescription"
           onChange={handleToolDescriptionChange}
-          // style={{ resize: "none" }}
           className="resize-none border-2 border-gray-300 rounded-md p-2"
         />
-        <Button type="submit" variant="contained" color="primary">
-          Add Tool
+        <Button
+          disabled={disableButton}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
+          {buttonText}
         </Button>
       </form>
     </div>
