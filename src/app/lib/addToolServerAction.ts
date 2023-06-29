@@ -3,19 +3,18 @@ import { revalidatePath } from "next/cache";
 import { c } from "./cloudinary";
 import imageResizeThenBase64 from "./imageResizeThenBase64";
 import { prisma } from "./prismaClient";
-// import { redirect } from "next/navigation";
-// import { NextResponse } from "next/server";
-interface ToolData {
-  id?: string;
-  toolImage?: string | null;
-  toolName: string | null;
-  toolSerialNumber?: string | null;
-  toolBrand?: string | null;
-  toolCategories?: string[] | null;
-  toolCondition?: string | null;
-  toolAccessories?: string[] | null;
-  toolDescription?: string | null;
-}
+import { iTool } from "./interfaces";
+// interface iTool {
+//   id?: string;
+//   toolImage?: string | null;
+//   toolName: string | null;
+//   toolSerialNumber?: string | null;
+//   toolBrand?: string | null;
+//   toolCategories?: string[] | null;
+//   toolCondition?: string | null;
+//   toolAccessories?: string[] | null;
+//   toolDescription?: string | null;
+// }
 
 const writeToDb = async (data: any) => {
   const prismaResult = await prisma.tools.create({
@@ -25,7 +24,7 @@ const writeToDb = async (data: any) => {
 };
 
 export default async function addToolServerAction(params: FormData) {
-  var dbResult: ToolData | null = null;
+  var dbResult: iTool | null = null;
   let data = {
     toolName: params.get("toolName"),
     toolSerialNumber: params.get("toolSerialNumber"),
