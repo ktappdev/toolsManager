@@ -10,17 +10,20 @@ import {
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Image from "next/image";
-import Actions from "@/app/lib/Actions";
-import { QueryClient } from "@tanstack/react-query";
+import addToolServerAction from "@/app/lib/addToolServerAction";
 import { useRouter } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import { useQueryClient } from "@tanstack/react-query";
+
 interface AddToolFormProps {
   // Define any additional props you may need
 }
 
 const NewItemForm: React.FC<AddToolFormProps> = () => {
+  const queryClient = useQueryClient();
   const [toolImage, setToolImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [disableButton, setDisableButton] = useState(false);
+  const [buttonText, setButtonText] = useState("Add Tool");
   // const [toolDescription, setToolDescription] = useState<string>("");
   const [formData, setFormData] = useState({
     toolName: "t",
@@ -49,10 +52,10 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     const file = event.target.files?.[0];
     if (file) {
       let imageFromFile = URL.createObjectURL(file);
-      console.log(imageFromFile);
 
       setToolImage(imageFromFile);
-      setToolImage(imageFromFile);
+      // setToolImage(imageFromFile);
+
       // setFormData((prevFormData) => ({
       //   ...prevFormData,
       //   ["toolImage"]: imageFromFile,
@@ -73,20 +76,29 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    // event.preventDefault();
+    setDisableButton(true);
+    setButtonText("Adding Tool...");
+    setTimeout(function () {
+      queryClient.invalidateQueries(["tools"]);
+      router.push("/mytools");
+    }, 3000);
     // console.log("Tool Name:", formData);
   };
   //action={Actions} //"/api/upload" // encType="multipart/form-data"
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
       <form
-        action={Actions}
+        action={addToolServerAction}
         className="flex w-full flex-col gap-4"
+        onSubmit={handleSubmit}
         // onSubmit={() => {
+        //   setDisableButton(true);
+        //   setButtonText("Adding Tool...");
         //   setTimeout(function () {
-        //     // revalidatePath("/mytools");
+        //     queryClient.invalidateQueries(["tools"]);
         //     router.push("/mytools");
-        //   }, 2000);
+        //   }, 3000);
         // }}
       >
         <div className="flex flex-row gap-1 justify-center">
@@ -197,8 +209,13 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           onChange={handleToolDescriptionChange}
           className="resize-none border-2 border-gray-300 rounded-md p-2"
         />
-        <Button type="submit" variant="contained" color="primary">
-          Add Tool
+        <Button
+          disabled={disableButton}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
+          {buttonText}
         </Button>
       </form>
     </div>
