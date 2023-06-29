@@ -11,6 +11,9 @@ import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Image from "next/image";
 import Actions from "@/app/lib/Actions";
+import { QueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
 interface AddToolFormProps {
   // Define any additional props you may need
 }
@@ -29,6 +32,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     toolCondition: "j",
     toolAccessories: "j",
   });
+  const router = useRouter();
   // const handleToolNameChange = (event: ChangeEvent<HTMLInputElement>) => {
   //   setToolName(event.target.value);
   // };
@@ -70,16 +74,20 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Tool Name:", formData);
-    // Actions(formData);
+    // console.log("Tool Name:", formData);
   };
   //action={Actions} //"/api/upload" // encType="multipart/form-data"
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
       <form
         action={Actions}
-        method="POST"
         className="flex w-full flex-col gap-4"
+        // onSubmit={() => {
+        //   setTimeout(function () {
+        //     // revalidatePath("/mytools");
+        //     router.push("/mytools");
+        //   }, 2000);
+        // }}
       >
         <div className="flex flex-row gap-1 justify-center">
           <div className="flex flex-col justify-center items-center">

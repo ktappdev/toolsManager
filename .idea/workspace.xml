@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c60ed72-e4dd-4959-9fa0-b628a4055637" name="Changes" comment="" />
+    <list default="true" id="5c60ed72-e4dd-4959-9fa0-b628a4055637" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/NewItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/NewItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,11 +35,14 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "supabase-fail",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "/Users/kentaylor/Developer/Javascript Projects/tools-manager/tm-nextjs",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/kentaylor/Developer/Javascript Projects/tools-manager/tm-nextjs/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -45,6 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1687481903509</updated>
       <workItem from="1687481906126" duration="221000" />
+      <workItem from="1687944451612" duration="2479000" />
     </task>
     <servers />
   </component>
