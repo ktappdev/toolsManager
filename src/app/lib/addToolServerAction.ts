@@ -7,7 +7,8 @@ import { writeToDb } from "./serverFunctions";
 
 export default async function addToolServerAction(params: FormData) {
   const PLACEHOLDER_IMAGE =
-    "https://res.cloudinary.com/dhglzlaqf/image/upload/v1688140420/myassets/placeholder_jpxutd.png";
+    "https://res.cloudinary.com/dhglzlaqf/image/upload/v1688140420/myassets/placeholder_jpxutd.png" ||
+    null;
   // var dbResult: iTool | null = null;
   let data = {
     toolName: params.get("toolName"),
@@ -15,7 +16,7 @@ export default async function addToolServerAction(params: FormData) {
     toolBrand: params.get("toolBrand"),
     toolCategories: params.get("toolCategories"),
     toolCondition: params.get("toolCondition"),
-    toolAccessories: params.get("toolAccessories"),
+    toolAccessories: params.get("toolAccessories"), 
     toolDescription: params.get("toolDescription"),
     toolImage: params.get("toolImage") as string,
   };
