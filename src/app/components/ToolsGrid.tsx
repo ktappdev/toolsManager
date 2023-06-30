@@ -6,7 +6,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { getTools } from "@/app/lib/queries";
+import { getTools } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 
 const ToolsGrid = (): JSX.Element => {
@@ -25,6 +25,7 @@ const ToolsGrid = (): JSX.Element => {
         {data?.map((tool) => (
           <li key={tool.id}>
             <p>{tool.toolName}</p>
+            <p>{tool.toolName.length}</p>
             {tool.toolImage && (
               <Image
                 src={tool.toolImage}
