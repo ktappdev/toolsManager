@@ -1,30 +1,30 @@
 "use client";
-import React, { useState, ChangeEvent, useRef, FormEvent } from "react";
-import {
-  TextField,
-  Button,
-  IconButton,
-  Typography,
-  TextareaAutosize,
-} from "@mui/material";
+import React, {
+  useState,
+  ChangeEvent,
+  useRef,
+  FormEvent,
+  useEffect,
+} from "react";
+import { TextField, Button, IconButton, TextareaAutosize } from "@mui/material";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Image from "next/image";
 import addToolServerAction from "@/app/lib/addToolServerAction";
 import { useRouter } from "next/navigation";
-import { useQueryClient } from "@tanstack/react-query";
-
-interface AddToolFormProps {
-  // Define any additional props you may need
-}
+import { resizeImage } from "@/app/lib/clientFunctions";
+import { base64StringToBlob } from "blob-util";
+interface AddToolFormProps {}
 
 const NewItemForm: React.FC<AddToolFormProps> = () => {
-  const queryClient = useQueryClient();
   const [toolImage, setToolImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [disableButton, setDisableButton] = useState(false);
   const [buttonText, setButtonText] = useState("Add Tool");
-  // const [toolDescription, setToolDescription] = useState<string>("");
+  const [imageAsBase64, setImageAsBase64] = useState<
+    string | ArrayBuffer | null
+  >(null);
+
   const [formData, setFormData] = useState({
     toolName: "t",
     toolImage: null,
@@ -36,9 +36,6 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     toolAccessories: "j",
   });
   const router = useRouter();
-  // const handleToolNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-  //   setToolName(event.target.value);
-  // };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -51,24 +48,39 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      let imageFromFile = URL.createObjectURL(file);
-
-      setToolImage(imageFromFile);
-      // setToolImage(imageFromFile);
-
-      // setFormData((prevFormData) => ({
-      //   ...prevFormData,
-      //   ["toolImage"]: imageFromFile,
-      // }));
-      console.log(imageFromFile);
+      setToolImage(toolImage);
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        setImageAsBase64(reader.result);
+      };
+      reader.onerror = function (error) {
+        console.log("base64 Error: ", error);
+      };
     }
   };
+
+  useEffect(() => {
+    if (imageAsBase64 !== null) {
+      const run = async () => {
+        let resizedImage = await resizeImage(imageAsBase64 as string);
+        return resizedImage as string;
+      };
+      run().then((smallFile) => {
+        fileInputRef.current!.src = smallFile;
+        setToolImage(smallFile);
+        console.log("this is small file", smallFile);
+        let imageAsBlob = base64StringToBlob(toolImage as string);
+
+        console.log(smallFile.length);
+      });
+    }
+  }, [imageAsBase64]);
 
   const handleToolDescriptionChange = (
     event: ChangeEvent<HTMLTextAreaElement>
   ) => {
     console.log(event.target.value);
-    // setToolDescription(event.target.value);
     setFormData((prevFormData) => ({
       ...prevFormData,
       ["toolDescription"]: event.target.value,
@@ -80,26 +92,24 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     setDisableButton(true);
     setButtonText("Adding Tool...");
     setTimeout(function () {
-      queryClient.invalidateQueries(["tools"]);
       router.push("/mytools");
-    }, 3000);
-    // console.log("Tool Name:", formData);
+    }, 500);
   };
+
+  async function handleSubmitFromButton(params: FormData) {
+    console.log(fileInputRef.current?.src);
+    // params.delete("toolImage");
+    params.set("toolImage", toolImage as string);
+    addToolServerAction(params); //this triggers the server action
+  }
+
   //action={Actions} //"/api/upload" // encType="multipart/form-data"
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
       <form
-        action={addToolServerAction}
+        // action={addToolServerAction}
         className="flex w-full flex-col gap-4"
         onSubmit={handleSubmit}
-        // onSubmit={() => {
-        //   setDisableButton(true);
-        //   setButtonText("Adding Tool...");
-        //   setTimeout(function () {
-        //     queryClient.invalidateQueries(["tools"]);
-        //     router.push("/mytools");
-        //   }, 3000);
-        // }}
       >
         <div className="flex flex-row gap-1 justify-center">
           <div className="flex flex-col justify-center items-center">
@@ -114,15 +124,14 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
                 style={{ display: "none" }}
                 onChange={handleImageChange}
                 name="photo"
+                src={toolImage ? toolImage : "/assets/defaultTool.jpg"}
               />
-              <IconButton
-
-              // className="gap-2"
-              >
+              <IconButton>
                 <CameraAltOutlinedIcon />
               </IconButton>
 
               <Image
+                // ref={imageRef}
                 src={toolImage || "/assets/defaultTool.jpg"}
                 alt="Tool"
                 width={40}
@@ -210,6 +219,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           className="resize-none border-2 border-gray-300 rounded-md p-2"
         />
         <Button
+          formAction={handleSubmitFromButton}
           disabled={disableButton}
           type="submit"
           variant="contained"
