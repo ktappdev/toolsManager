@@ -14,6 +14,8 @@ import addToolServerAction from "@/app/lib/addToolServerAction";
 import { useRouter } from "next/navigation";
 import { resizeImage } from "@/app/lib/clientFunctions";
 import { base64StringToBlob } from "blob-util";
+// import { useQueryClient } from "@tanstack/react-query";
+
 interface AddToolFormProps {}
 
 const NewItemForm: React.FC<AddToolFormProps> = () => {
@@ -24,6 +26,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
   const [imageAsBase64, setImageAsBase64] = useState<
     string | ArrayBuffer | null
   >(null);
+  // const queryClient = useQueryClient();
 
   const [formData, setFormData] = useState({
     toolName: "t",
@@ -69,10 +72,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
       run().then((smallFile) => {
         fileInputRef.current!.src = smallFile;
         setToolImage(smallFile);
-        console.log("this is small file", smallFile);
         let imageAsBlob = base64StringToBlob(toolImage as string);
 
-        console.log(smallFile.length);
       });
     }
   }, [imageAsBase64]);
@@ -92,12 +93,12 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     setDisableButton(true);
     setButtonText("Adding Tool...");
     setTimeout(function () {
+      // queryClient.invalidateQueries(["tools"]);
       router.push("/mytools");
     }, 500);
   };
 
   async function handleSubmitFromButton(params: FormData) {
-    console.log(fileInputRef.current?.src);
     // params.delete("toolImage");
     params.set("toolImage", toolImage as string);
     addToolServerAction(params); //this triggers the server action

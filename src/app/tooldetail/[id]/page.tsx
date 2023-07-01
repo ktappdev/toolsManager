@@ -1,5 +1,5 @@
 const page = ({ params }: { params: { id: string } }) => {
-  return <div>page {params.id} test</div>;
+  return <div> {params.id}</div>;
 };
 
 export default page;
