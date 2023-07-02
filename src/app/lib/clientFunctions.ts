@@ -1,8 +1,8 @@
 "use client";
 export function resizeImage(
   base64Str: string,
-  maxWidth = 800,
-  maxHeight = 800
+  maxWidth = 1000,
+  maxHeight = 1000
 ) {
   return new Promise((resolve) => {
     let img = new Image();

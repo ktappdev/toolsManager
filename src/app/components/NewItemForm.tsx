@@ -73,7 +73,6 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
         fileInputRef.current!.src = smallFile;
         setToolImage(smallFile);
         let imageAsBlob = base64StringToBlob(toolImage as string);
-
       });
     }
   }, [imageAsBase64]);
@@ -95,7 +94,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     setTimeout(function () {
       // queryClient.invalidateQueries(["tools"]);
       router.push("/mytools");
-    }, 500);
+    }, 2000);
   };
 
   async function handleSubmitFromButton(params: FormData) {
@@ -103,13 +102,12 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     params.set("toolImage", toolImage as string);
     addToolServerAction(params); //this triggers the server action
   }
-
   //action={Actions} //"/api/upload" // encType="multipart/form-data"
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
       <form
         // action={addToolServerAction}
-        className="flex w-full flex-col gap-4"
+        className="flex w-full flex-col gap-2"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-row gap-1 justify-center">
@@ -211,8 +209,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
         </div>
 
         <TextareaAutosize
-          minRows={4}
-          maxRows={4}
+          minRows={3}
+          maxRows={3}
           placeholder="Description / Comments"
           value={formData.toolDescription}
           name="toolDescription"

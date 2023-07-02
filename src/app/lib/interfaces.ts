@@ -7,7 +7,7 @@ export interface iTool {
   toolCategories: string[];
   toolSerialNumber: string | null;
   toolPurchaseDate: Date;
-  toolBrand: string;
+  toolBrand: string | null;
   toolCondition: string;
   toolAccessories: string[];
 }

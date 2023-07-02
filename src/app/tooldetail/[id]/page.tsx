@@ -1,5 +1,11 @@
+import ToolDetail from "@/app/components/ToolDetailComponent";
+
 const page = ({ params }: { params: { id: string } }) => {
-  return <div> {params.id}</div>;
+  return (
+    <div>
+      <ToolDetail toolId={params.id} />
+    </div>
+  );
 };
 
 export default page;
