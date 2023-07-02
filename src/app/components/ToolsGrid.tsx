@@ -1,14 +1,10 @@
 "use client";
-import {
-  useQuery
-} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getTools } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import Link from "next/link";
 
 const ToolsGrid = (): JSX.Element => {
-  // const queryClient = useQueryClient();
-  // queryClient.invalidateQueries(["tools"]);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["tools"],
     queryFn: getTools,
@@ -17,25 +13,25 @@ const ToolsGrid = (): JSX.Element => {
   if (isError) return <p>{error?.toString()}</p>;
 
   return (
-    <div className="overflow-auto">
-      <ul className="grid grid-cols-4 gap-4">
-        {data?.map((tool) => (
-          <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
-            <li key={tool.id}>
-              <p>{tool.toolName}</p>
-              {tool.toolImage && (
+    <div className="grid grid-cols-4 gap-4 px-2">
+      {data.map((tool) => (
+        <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
+          <div className="border border-gray-300 rounded p-4 hover:bg-gray-100 items-center flex flex-col justify-center w-full h-full">
+            {tool.toolImage && (
+              <div className="relative mb-2 flex flex-1">
                 <Image
                   src={tool.toolImage}
-                  width={50}
-                  height={50}
                   alt={tool.toolName}
-                  className="w-full h-auto  "
+                  width={80} // Adjust the value as per your requirements
+                  height={80} // Adjust the value as per your requirements
+                  className="object-cover items-center justify-center"
                 />
-              )}
-            </li>
-          </Link>
-        ))}
-      </ul>
+              </div>
+            )}
+            <h3 className="text-sm font-medium mb-2">{tool.toolName}</h3>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
