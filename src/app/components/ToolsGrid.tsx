@@ -1,13 +1,10 @@
 "use client";
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
+  useQuery
 } from "@tanstack/react-query";
 import { getTools } from "@/app/lib/serverFunctions";
 import Image from "next/image";
+import Link from "next/link";
 
 const ToolsGrid = (): JSX.Element => {
   // const queryClient = useQueryClient();
@@ -23,19 +20,20 @@ const ToolsGrid = (): JSX.Element => {
     <div className="overflow-auto">
       <ul className="grid grid-cols-4 gap-4">
         {data?.map((tool) => (
-          <li key={tool.id}>
-            <p>{tool.toolName}</p>
-            <p>{tool.toolName.length}</p>
-            {tool.toolImage && (
-              <Image
-                src={tool.toolImage}
-                width={50}
-                height={50}
-                alt={tool.toolName}
-                className="w-full h-auto  "
-              />
-            )}
-          </li>
+          <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
+            <li key={tool.id}>
+              <p>{tool.toolName}</p>
+              {tool.toolImage && (
+                <Image
+                  src={tool.toolImage}
+                  width={50}
+                  height={50}
+                  alt={tool.toolName}
+                  className="w-full h-auto  "
+                />
+              )}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

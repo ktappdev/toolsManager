@@ -16,14 +16,13 @@ export default async function addToolServerAction(params: FormData) {
     toolBrand: params.get("toolBrand"),
     toolCategories: params.get("toolCategories"),
     toolCondition: params.get("toolCondition"),
-    toolAccessories: params.get("toolAccessories"), 
+    toolAccessories: params.get("toolAccessories"),
     toolDescription: params.get("toolDescription"),
     toolImage: params.get("toolImage") as string,
   };
   // const toolImageFromFormData = params.get("photo") as Blob | null;
 
   try {
-    console.log(data.toolImage);
     if (data.toolImage === null) {
       data.toolImage = PLACEHOLDER_IMAGE;
     }
