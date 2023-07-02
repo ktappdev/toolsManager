@@ -23,9 +23,14 @@ export default async function addToolServerAction(params: FormData) {
   // const toolImageFromFormData = params.get("photo") as Blob | null;
 
   try {
-    if (data.toolImage === null) {
+    // console.log("x", data.toolImage);
+    console.log(data.toolImage);
+    if (data.toolImage === "null") {
+      console.log("no image provided");
+
       data.toolImage = PLACEHOLDER_IMAGE;
     }
+    // console.log(data.toolImage);
     let imageUploadReport = await c.uploader.upload(data.toolImage, {
       resource_type: "image",
       folder: "tools",
@@ -36,34 +41,6 @@ export default async function addToolServerAction(params: FormData) {
     console.log(imageUploadReport);
     console.log(databaseReport);
   } catch (error) {
-    console.log(error);
+    console.log("here is the error", error);
   }
-  //   if (!toolImageFromFormData) {
-  //     console.log("no image provided");
-  //     var dbResult = await writeToDb(data);
-  //     revalidatePath("/mytools");
-  //   } else {
-  //     try {
-  //       const buffer = Buffer.from(await toolImageFromFormData.arrayBuffer());
-  //       let smallerFile = await imageResizeThenBase64(buffer);
-  //       c.uploader
-  //         .upload_stream(
-  //           { resource_type: "image", folder: "tools", use_filename: true },
-  //           async (error, result) => {
-  //             if (error) {
-  //               console.log(error);
-  //               data.toolImage = "image failed to upload";
-  //             } else {
-  //               console.log("starting else");
-  //               data.toolImage = result?.secure_url!;
-  //               var dbResult = await writeToDb(data);
-  //               revalidatePath("/mytools");
-  //             }
-  //           }
-  //         )
-  //         .end(buffer); //replace this with smallerfile
-  //     } catch (e) {
-  //       console.log("this is the error from server action", e);
-  //     }
-  //   }
 }
