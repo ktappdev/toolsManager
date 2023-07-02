@@ -24,7 +24,7 @@ export default async function addToolServerAction(params: FormData) {
 
   try {
     // console.log("x", data.toolImage);
-    console.log(data.toolImage.slice(0, 60));
+    console.log(data.toolImage);
     if (data.toolImage === "null") {
       console.log("no image provided");
 

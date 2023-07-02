@@ -80,7 +80,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
   const handleToolDescriptionChange = (
     event: ChangeEvent<HTMLTextAreaElement>
   ) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setFormData((prevFormData) => ({
       ...prevFormData,
       ["toolDescription"]: event.target.value,
@@ -94,12 +94,13 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     setTimeout(function () {
       // queryClient.invalidateQueries(["tools"]);
       router.push("/mytools");
-    }, 2000);
+    }, 4000);
   };
 
   async function handleSubmitFromButton(params: FormData) {
-    // params.delete("toolImage");
+    params.delete("toolImage");
     params.set("toolImage", toolImage as string);
+    // console.log("image in handlesubmit from button", toolImage);
     addToolServerAction(params); //this triggers the server action
   }
   //action={Actions} //"/api/upload" // encType="multipart/form-data"
