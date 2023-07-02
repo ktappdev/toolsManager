@@ -17,10 +17,11 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
 
   if (isLoading) return <LoadingSpinner />;
   if (isError) return <p>{error?.toString()}</p>;
-  console.log(data);
 
   return (
-    <div className="overflow-auto">{data ? data.toolName : "Loading..."}</div>
+    <div className="overflow-auto border-2 border-red-200 rounded-lg ">
+      {/* <div>{data ? data.toolName : null}</div> */}
+    </div>
   );
 };
 

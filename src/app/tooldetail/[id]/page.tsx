@@ -1,4 +1,5 @@
 import ToolDetail from "@/app/components/ToolDetailComponent";
+import { getToolDetail } from "@/app/lib/serverFunctions";
 
 const page = ({ params }: { params: { id: string } }) => {
   return (
