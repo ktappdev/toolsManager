@@ -12,6 +12,10 @@ module.exports = {
           "accent-1": "#1976d2",
         },
       },
+      screens: {
+        xs: "375px",
+        sm: "390px",
+      },
     },
   },
   plugins: [],
