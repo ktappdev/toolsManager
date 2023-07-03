@@ -4,6 +4,7 @@ import { getTools } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import Link from "next/link";
 
+// Get QueryClient from the context
 const ToolsGrid = (): JSX.Element => {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["tools"],
@@ -16,6 +17,7 @@ const ToolsGrid = (): JSX.Element => {
     <div className="grid grid-cols-4 gap-4 px-2">
       {data.map((tool) => (
         <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
+          
           <div className="border border-gray-300 rounded p-4 hover:bg-gray-100 items-center flex flex-col justify-center w-full h-full">
             {tool.toolImage && (
               <div className="relative mb-2 flex flex-1">
