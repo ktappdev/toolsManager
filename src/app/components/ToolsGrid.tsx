@@ -3,8 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { getTools } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import Link from "next/link";
+import { revalidatePath } from "next/cache";
+import { iTool } from "@/app/lib/interfaces";
+import { useRouter } from "next/navigation";
 
+// Get QueryClient from the context
 const ToolsGrid = (): JSX.Element => {
+  const router = useRouter();
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["tools"],
     queryFn: getTools,
@@ -15,7 +20,13 @@ const ToolsGrid = (): JSX.Element => {
   return (
     <div className="grid grid-cols-4 gap-4 px-2">
       {data.map((tool) => (
-        <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
+        <Link
+          // onClick={() => {
+          //   revalidatePath(`/tooldetail/${tool.id}`)
+          // }}
+          href={`/tooldetail/${tool.id}`}
+          key={tool.id}
+        >
           <div className="border border-gray-300 rounded p-4 hover:bg-gray-100 items-center flex flex-col justify-center w-full h-full">
             {tool.toolImage && (
               <div className="relative mb-2 flex flex-1">

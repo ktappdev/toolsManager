@@ -108,14 +108,14 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     <div className="flex justify-center items-center w-full h-full flex-col">
       <form
         // action={addToolServerAction}
-        className="flex w-full flex-col gap-2"
+        className="flex w-full flex-col gap-4"
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-row gap-1 justify-center">
+        <div className="flex flex-row justify-center gap-4">
           <div className="flex flex-col justify-center items-center">
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="flex flex-row gap-1 justify-center items-center hover:bg-gray-100 cursor-pointer rounded-md p-2"
+              className="flex flex-row justify-center items-center hover:bg-gray-100 cursor-pointer rounded-md p-2"
             >
               <input
                 ref={fileInputRef}
@@ -210,8 +210,8 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
         </div>
 
         <TextareaAutosize
-          minRows={3}
-          maxRows={3}
+          minRows={2}
+          maxRows={2}
           placeholder="Description / Comments"
           value={formData.toolDescription}
           name="toolDescription"

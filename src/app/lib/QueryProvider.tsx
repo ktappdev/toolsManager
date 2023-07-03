@@ -4,7 +4,17 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 function QueryProvider({ children }: React.PropsWithChildren) {
   const [client] = React.useState(
-    new QueryClient({ defaultOptions: { queries: { staleTime: 5000 } } })
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          // staleTime: 0,
+          refetchOnMount: true,
+          refetchOnWindowFocus: true,
+          refetchOnReconnect: true,
+          retry: true,
+        },
+      },
+    })
   );
 
   return <QueryClientProvider client={client}>{children}</QueryClientProvider>;

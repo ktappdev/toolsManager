@@ -3,7 +3,7 @@ import { getToolDetail } from "@/app/lib/serverFunctions";
 
 const page = ({ params }: { params: { id: string } }) => {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center py-8 overflow-scroll">
       <ToolDetail toolId={params.id} />
     </div>
   );
