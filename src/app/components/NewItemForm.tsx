@@ -218,15 +218,16 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           onChange={handleToolDescriptionChange}
           className="resize-none border-2 border-gray-300 rounded-md p-2"
         />
-        <Button
+        <button
           formAction={handleSubmitFromButton}
           disabled={disableButton}
           type="submit"
-          variant="contained"
-          color="primary"
+          className="bg-c-accent-1 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          // variant="contained"
+          // color="primary"
         >
           {buttonText}
-        </Button>
+        </button>
       </form>
     </div>
   );

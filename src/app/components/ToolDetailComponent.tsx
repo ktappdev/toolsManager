@@ -32,7 +32,7 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
     <div className=" flex flex-1 flex-col items-center justify-center  p-4 ">
       <div
         id="all-items-container"
-        className="flex flex-col gap-4 h-full pt-36 md:pt-4"
+        className="flex flex-col gap-4 h-full pt-36 md:pt-4 lg:pt-24"
       >
         <div id="top-row-container" className="flex flex-col md:flex-row gap-4">
           {/* Card 1 */}
