@@ -6,6 +6,8 @@ import CallMadeIcon from "@mui/icons-material/CallMade";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
 import Link from "next/link";
+import vaultIcon from "/public/assets/app/vault.svg";
+import Image from "next/image";
 
 const GridUi = () => {
   return (
@@ -31,8 +33,10 @@ const GridUi = () => {
         </div>
         <Link href="/mytools">
           <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
-            <HomeRepairServiceIcon />
-            <div className="text-sm">Items Home</div>
+            {/* <HomeRepairServiceIcon /> */}
+            <Image src={vaultIcon} width={20} height={20} alt="vault icon" />
+
+            <div className="text-sm">Tool Vault</div>
           </div>
         </Link>
         <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
