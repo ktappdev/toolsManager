@@ -1,7 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import { c } from "./cloudinary";
-import imageResizeThenBase64 from "./imageResizeThenBase64";
 import { iTool } from "./interfaces";
 import { writeToDb } from "./serverFunctions";
 
