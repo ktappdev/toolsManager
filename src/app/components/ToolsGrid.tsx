@@ -18,16 +18,10 @@ const ToolsGrid = (): JSX.Element => {
   if (isError) return <p>{error?.toString()}</p>;
 
   return (
-    <div className="grid grid-cols-4 gap-4 px-2">
+    <div className="grid xxs:grid-cols-3 md:grid-cols-4 gap-4 px-2">
       {data.map((tool) => (
-        <Link
-          // onClick={() => {
-          //   revalidatePath(`/tooldetail/${tool.id}`)
-          // }}
-          href={`/tooldetail/${tool.id}`}
-          key={tool.id}
-        >
-          <div className="border border-gray-300 rounded p-4 hover:bg-gray-100 items-center flex flex-col justify-center w-full h-full">
+        <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
+          <div className=" p-2 hover:bg-gray-100 items-center flex flex-col justify-center w-full h-full shadow-slate-300 shadow-xl rounded-2xl">
             {tool.toolImage && (
               <div className="relative mb-2 flex flex-1">
                 <Image
@@ -35,7 +29,7 @@ const ToolsGrid = (): JSX.Element => {
                   alt={tool.toolName}
                   width={80} // Adjust the value as per your requirements
                   height={80} // Adjust the value as per your requirements
-                  className="object-cover items-center justify-center"
+                  className="object-contain items-center justify-center rounded-xl w-auto h-auto"
                 />
               </div>
             )}

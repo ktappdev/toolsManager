@@ -29,15 +29,18 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
 
   // queryClient.invalidateQueries({ queryKey: ["toolDetail"] });
   return (
-    <div className=" flex flex-1 flex-col items-center justify-center  p-4 ">
+    <div className=" flex flex-1 flex-col items-center justify-center  p-4 w-full">
       <div
         id="all-items-container"
-        className="flex flex-col gap-4 h-full pt-36 md:pt-4"
+        className="flex flex-col gap-4 h-full pt-36 md:pt-4 lg:pt-24 w-full"
       >
-        <div id="top-row-container" className="flex flex-col md:flex-row gap-4">
+        <div
+          id="top-row-container"
+          className="flex flex-col md:flex-row gap-4 w-full"
+        >
           {/* Card 1 */}
-          <div className="md:col-span-3">
-            <div className="bg-white rounded-md shadow-md p-4">
+          <div className="md:w-3/4">
+            <div className="bg-white rounded-md shadow-md p-4 w-full">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">{data?.toolName}</h2>
                 <span className="text-sm text-gray-500">
@@ -58,13 +61,13 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
                 </ul>
               </div>
               {data?.toolImage && (
-                <div className="my-4 bg-amber-400">
+                <div className="my-4 w-full">
                   <Image
                     src={data?.toolImage}
                     alt={data?.toolName}
                     width={180}
                     height={180}
-                    className="rounded-md object-cover xs:h-52 w-80 sm:h-80"
+                    className="rounded-md object-contain xs:h-52 sm:h-80 w-full"
                   />
                 </div>
               )}
@@ -73,7 +76,7 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
           </div>
 
           {/* Card 2 */}
-          <div className="md:col-span-1">
+          <div className="md:w-1/4">
             <div className="bg-white rounded-md shadow-md p-4">
               <h3 className="text-lg font-bold mb-4">Status</h3>
               Card 2 content goes here

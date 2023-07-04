@@ -1,5 +1,5 @@
 import { FC } from "react";
-import GridUi from "@/app/components/GridUi";
+import GridUi from "@/app/components/DashboardGridUi";
 
 interface pageProps {}
 

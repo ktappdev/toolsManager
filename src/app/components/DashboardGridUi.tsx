@@ -10,7 +10,7 @@ import Link from "next/link";
 const GridUi = () => {
   return (
     <>
-      <div className="grid grid-cols-2 justify-center items-center w-full gap-4 px-8 py-4">
+      <div className="grid grid-cols-2 justify-center items-center w-full gap-4 px-8 py-4 overflow-scroll">
         <Link href="/newitem">
           <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
             <AddCircleOutlineIcon />
