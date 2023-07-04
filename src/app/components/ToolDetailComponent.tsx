@@ -61,13 +61,13 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
                 </ul>
               </div>
               {data?.toolImage && (
-                <div className="my-4 w-full">
+                <div className="my-4 w-full flex justify-center items-center">
                   <Image
                     src={data?.toolImage}
                     alt={data?.toolName}
                     width={180}
                     height={180}
-                    className="rounded-md object-contain xs:h-52 sm:h-80 w-full"
+                    className="rounded-md object-contain xs:h-52 sm:h-80 w-auto"
                   />
                 </div>
               )}
@@ -76,9 +76,17 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
           </div>
 
           {/* Card 2 */}
-          <div className="md:w-1/4">
-            <div className="bg-white rounded-md shadow-md p-4">
+          <div className="md:w-1/4 h-full bg-c-accent-1 flex flex-col gap-2 items-center justify-evenly px-1 py-4 rounded">
+            <div className="bg-white  shadow-md p-4 w-full">
               <h3 className="text-lg font-bold mb-4">Status</h3>
+              Card 2 content goes here
+            </div>
+            <div className="bg-white  shadow-md p-4 w-full">
+              <h3 className="text-lg font-bold mb-4">Something</h3>
+              Card 2 content goes here
+            </div>
+            <div className="bg-white  shadow-md p-4 w-full">
+              <h3 className="text-lg font-bold mb-4">Other Thing</h3>
               Card 2 content goes here
             </div>
           </div>
