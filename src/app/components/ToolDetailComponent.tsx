@@ -4,8 +4,7 @@ import { getToolDetail } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import Link from "next/link";
 import LoadingSpinner from "./LoadingSpinner";
-// import { useEffect } from "react";
-// export const revalidate = 0;
+
 
 interface ToolDetailProps {
   toolId: string;

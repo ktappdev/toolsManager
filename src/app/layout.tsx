@@ -45,7 +45,7 @@ export default function RootLayout({
                   </Suspense>
                 </div>
               </header>
-              <div className="flex flex-col justify-center items-center w-full h-[calc(100vh-180px)] mt-14">
+              <div className="flex flex-col justify-center items-center w-full h-[calc(100vh-100px)]">
                 {children}
               </div>
               <div className="z-10 fixed bottom-0 left-0 right-0 flex justify-center items-center w-full h-24 bg-c-accent-1 dark:bg-gray-900 dark:text-gray-100 text-gray-900 text-sm font-semibold">

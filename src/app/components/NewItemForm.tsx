@@ -93,7 +93,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
     setButtonText("Adding Tool...");
     setTimeout(function () {
       // queryClient.invalidateQueries(["tools"]);
-      router.push("/mytools");
+      router.push("/toolsvault");
     }, 4000);
   };
 

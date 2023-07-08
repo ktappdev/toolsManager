@@ -31,12 +31,12 @@ const GridUi = () => {
           <CallMadeIcon />
           <div className="text-sm">Lend Item</div>
         </div>
-        <Link href="/mytools">
+        <Link href="/toolsvault">
           <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
             {/* <HomeRepairServiceIcon /> */}
             <Image src={vaultIcon} width={20} height={20} alt="vault icon" />
 
-            <div className="text-sm">Tool Vault</div>
+            <div className="text-sm">Tools Vault</div>
           </div>
         </Link>
         <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">

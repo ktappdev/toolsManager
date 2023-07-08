@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/newitem",
+    "src/app/(routes)/newitem",
     "src/app/_offline.js"
   ],
   "exclude": ["node_modules"]
