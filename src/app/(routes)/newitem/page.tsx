@@ -1,5 +1,5 @@
 import { FC } from "react";
-import NewItemForm from "../components/NewItemForm";
+import NewItemForm from "../../components/NewItemForm";
 interface pageProps {}
 
 export default async function page() {
