@@ -6,8 +6,9 @@ export const getTools = async (): Promise<iTool[]> => {
   const tools: iTool[] = await prisma.tools.findMany();
   return tools;
 };
-export const getToolDetail = async (id: string) => {
-  //: Promise<iTool>
+
+export const getToolDetail = async (id: string): Promise<iTool | null> => {
+  //
   const tool = await prisma.tools.findUnique({
     where: {
       id: id,

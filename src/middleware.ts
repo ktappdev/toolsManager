@@ -6,10 +6,16 @@ import {
 } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
-const whiteList = ["ktad592@gmail.com", "kendabeatmaker@gmail.com", "kentaylorappdev@gmail.com"]; //"kendabeatmaker@gmail.com"
+const whiteList = [
+  "ktad592@gmail.com",
+  "kendabeatmaker@gmail.com",
+  "kentaylorappdev@gmail.com",
+  "sunaikaadolphus@gmail.com",
+]; //"kendabeatmaker@gmail.com"
 export default authMiddleware({
   publicRoutes: ["/", "/sign-in", "/sign-up", "/not-authorized"],
   afterAuth(auth, req) {
+    // console.log(auth)
     if (
       auth.sessionClaims?.email &&
       req.nextUrl.pathname === "/not-authorized" &&

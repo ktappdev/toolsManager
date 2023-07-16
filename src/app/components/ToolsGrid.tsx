@@ -3,8 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import { getTools } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import Link from "next/link";
-import { revalidatePath } from "next/cache";
-import { iTool } from "@/app/lib/interfaces";
 import { useRouter } from "next/navigation";
 
 // Get QueryClient from the context
