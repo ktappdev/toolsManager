@@ -5,8 +5,8 @@ interface pageProps {}
 
 const page: FC<pageProps> = async ({}) => {
   return (
-    <div className="grid grid-cols-1 justify-start items-center w-full overflow-clip">
-      <div className="text-2xl text-center mb-4 w-full">Dashboard</div>
+    <div className="flex flex-col justify-center items-center w-full h-full ">
+      <div className="text-2xl text-center ">Dashboard</div>
       <DashboardGridUi />
     </div>
   );

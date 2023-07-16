@@ -46,9 +46,9 @@ const page = () => {
 
   //className="hover:text-blue-500 hover:underline"
   return (
-    <div className="flex flex-col gap-2 items-center justify-center w-full h-full ">
-      <div className="text-lg text-white flex flex-row  items-center justify-evenly w-full  mb-2 rounded-md fixed top-[2.5rem] z-20 p-2 shadow-md bg-c-accent-1">
-        <div className="flex flex-row gap-3 overflow-x-scroll whitespace-nowrap ">
+    <div className=" tools-grid-container flex flex-col gap-2 items-center justify-center ">
+      <div className="tags-bar text-lg text-white flex flex-row  items-center justify-evenly w-full  mb-2 rounded-md fixed top-[2.5rem] z-20 p-2 shadow-md bg-c-accent-1">
+        <div className="flex flex-row gap-3 overflow-x-scroll whitespace-nowrap no-scrollbar">
           {categoryList.map((category) => (
             <Link href={category.link} key={category.name}>
               <div className="hover:text-white hover:underline text-sm p-1 justify-start items-start">
@@ -58,9 +58,7 @@ const page = () => {
           ))}
         </div>
       </div>
-      <div className=" flex flex-col overflow-scroll">
-        <ToolsGrid />
-      </div>
+      <ToolsGrid />
     </div>
   );
 };

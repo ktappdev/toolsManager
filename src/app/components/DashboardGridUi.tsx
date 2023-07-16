@@ -11,8 +11,8 @@ import Image from "next/image";
 
 const GridUi = () => {
   return (
-    <>
-      <div className="grid grid-cols-2 justify-center items-center w-full gap-4 px-8 py-4 overflow-scroll">
+    <div className="h-full w-full flex flex-col justify-start items-center">
+      <div className="grid grid-cols-2 justify-center items-center w-full gap-4 px-8 py-4">
         <Link href="/newitem">
           <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
             <AddCircleOutlineIcon />
@@ -44,7 +44,7 @@ const GridUi = () => {
           <div className="text-sm">Items Out</div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
