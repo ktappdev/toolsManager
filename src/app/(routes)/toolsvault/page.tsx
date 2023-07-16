@@ -51,7 +51,7 @@ const page = () => {
         <div className="flex flex-row gap-3 overflow-x-scroll whitespace-nowrap ">
           {categoryList.map((category) => (
             <Link href={category.link} key={category.name}>
-              <div className="hover:text-yellow-500 hover:underline text-sm p-1 justify-start items-start">
+              <div className="hover:text-white hover:underline text-sm p-1 justify-start items-start">
                 {`#${category.name}`}
               </div>
             </Link>
