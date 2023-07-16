@@ -17,10 +17,14 @@ export default function SimpleBottomNavigation() {
       sx={{
         width: "100%",
         height: "100%",
-        // paddingBottom: "2rem",
+        borderTop: "2px solid #eaeaea",
       }}
     >
       <BottomNavigation
+        sx={{
+          backgroundColor: "#1976d2",
+
+        }}
         showLabels
         // value={value}
         onChange={(event, newValue) => {
@@ -30,16 +34,25 @@ export default function SimpleBottomNavigation() {
         }}
       >
         <BottomNavigationAction
+          sx={{
+            color: "#fff",
+          }}
           value={"/recent"}
           label="Recent"
           icon={<RestoreIcon />}
         />
         <BottomNavigationAction
+          sx={{
+            color: "#fff",
+          }}
           value={"/updates"}
           label="Updates"
           icon={<FavoriteIcon />}
         />
         <BottomNavigationAction
+          sx={{
+            color: "#fff",
+          }}
           value={"/dashboard"}
           label="Dashboard"
           icon={<DashboardIcon />}

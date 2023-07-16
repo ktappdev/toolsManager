@@ -10,10 +10,10 @@ const Logo = () => {
       <Image
         src="/assets/icons/icon-48x48.png"
         alt="logo"
-        className=""
         width={28}
         height={28}
         onClick={() => router.push("/")}
+        className="hover:cursor-pointer"
       />
     </>
   );
