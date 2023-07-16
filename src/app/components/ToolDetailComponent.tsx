@@ -26,10 +26,10 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
 
   // queryClient.invalidateQueries({ queryKey: ["toolDetail"] });
   return (
-    <div className=" flex flex-1 flex-col items-center justify-center  pt-60 md:p-4 w-full">
+    <div className=" flex flex-col items-center justify-center md:p-4 w-full ">
       <div
         id="all-items-container"
-        className="flex flex-col gap-4 h-full pt-36 md:pt-4 lg:pt-24 w-full"
+        className="flex flex-col gap-4 h-full md:pt-4 lg:pt-24 w-full"
       >
         <div
           id="top-row-container"

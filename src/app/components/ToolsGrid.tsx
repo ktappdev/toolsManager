@@ -14,9 +14,9 @@ const ToolsGrid = (): JSX.Element => {
   });
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error?.toString()}</p>;
-
+  //xxs:mt-[26rem]
   return (
-    <div className="grid xxs:grid-cols-3 md:grid-cols-5 gap-4 px-2 xxs:mt-[26rem]  sm:mt-[15rem] md:mt-[5.5rem]">
+    <div className="grid xxs:grid-cols-3 md:grid-cols-5 gap-4 px-2 h-full overflow-scroll">
       {data.map((tool) => (
         <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
           <div className=" p-2 hover:bg-gray-100 items-center text-center flex flex-col justify-center w-full h-full shadow-slate-300 shadow-sm rounded-2xl">
