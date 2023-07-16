@@ -1,36 +1,27 @@
-"use client";
-import React, { useEffect } from "react";
-function usePreventZoom(scrollCheck = true, keyboardCheck = true) {
+import { useEffect } from "react";
+
+function usePreventZoom(scrollCheck = true, pinchCheck = true): void {
   useEffect(() => {
-    const handleKeydown = (e: any) => {
-      if (
-        keyboardCheck &&
-        e.ctrlKey &&
-        (e.keyCode == "61" ||
-          e.keyCode == "107" ||
-          e.keyCode == "173" ||
-          e.keyCode == "109" ||
-          e.keyCode == "187" ||
-          e.keyCode == "189")
-      ) {
+    const handlePinch = (e: TouchEvent) => {
+      if (pinchCheck && e.touches.length > 1) {
         e.preventDefault();
       }
     };
 
-    const handleWheel = (e: any) => {
+    const handleWheel = (e: WheelEvent) => {
       if (scrollCheck && e.ctrlKey) {
         e.preventDefault();
       }
     };
 
-    document.addEventListener("keydown", handleKeydown);
+    document.addEventListener("touchstart", handlePinch, { passive: false });
     document.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
-      document.removeEventListener("keydown", handleKeydown);
+      document.removeEventListener("touchstart", handlePinch);
       document.removeEventListener("wheel", handleWheel);
     };
-  }, [scrollCheck, keyboardCheck]);
+  }, [scrollCheck, pinchCheck]);
 }
 
 export default usePreventZoom;
