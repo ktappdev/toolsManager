@@ -29,14 +29,14 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
   // const queryClient = useQueryClient();
 
   const [formData, setFormData] = useState({
-    toolName: "t",
+    toolName: "Test Tool",
     toolImage: null,
-    toolCategories: "h",
-    toolDescription: "g",
-    toolSerialNumber: "yu",
-    toolBrand: "yh",
-    toolCondition: "j",
-    toolAccessories: "j",
+    toolCategories: "Category1, Category2",
+    toolDescription: "Test Description",
+    toolSerialNumber: "Test Serial Number",
+    toolBrand: "Test Brand",
+    toolCondition: "Test Condition",
+    toolAccessories: "Test Accessories",
   });
   const router = useRouter();
 
@@ -179,7 +179,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
               required
               className="w-full"
             />
-            <div className="flex flex-row flex-1 justify-center items-center">
+            {/* <div className="flex flex-row flex-1 justify-center items-center">
               <IconButton
                 onClick={() => {
                   console.log("clicked new category");
@@ -187,7 +187,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
               >
                 <PlaylistAddIcon />
               </IconButton>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="flex flex-row gap-2 justify-evenly">
