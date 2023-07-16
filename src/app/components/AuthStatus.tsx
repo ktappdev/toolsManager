@@ -4,7 +4,7 @@ import { useSignIn } from "@clerk/nextjs";
 
 export default function AuthStatus() {
   const { isLoaded, signIn } = useSignIn();
-  console.log(signIn);
+  // console.log(signIn);
   if (!isLoaded) {
     // Handle loading state
     return <div>The current sign in attempt status is {isLoaded}.</div>;

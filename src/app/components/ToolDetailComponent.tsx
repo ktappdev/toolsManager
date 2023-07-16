@@ -2,9 +2,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getToolDetail } from "@/app/lib/serverFunctions";
 import Image from "next/image";
-import Link from "next/link";
 import LoadingSpinner from "./LoadingSpinner";
-
 
 interface ToolDetailProps {
   toolId: string;
@@ -28,7 +26,7 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
 
   // queryClient.invalidateQueries({ queryKey: ["toolDetail"] });
   return (
-    <div className=" flex flex-1 flex-col items-center justify-center  p-4 w-full">
+    <div className=" flex flex-1 flex-col items-center justify-center  pt-60 md:p-4 w-full">
       <div
         id="all-items-container"
         className="flex flex-col gap-4 h-full pt-36 md:pt-4 lg:pt-24 w-full"
@@ -75,7 +73,7 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
           </div>
 
           {/* Card 2 */}
-          <div className="md:w-1/4 h-full bg-c-accent-1 flex flex-col gap-2 items-center justify-evenly px-1 py-4 rounded">
+          <div className="md:w-1/4 h-full flex flex-col gap-2 items-center justify-evenly px-1 py-4 rounded">
             <div className="bg-white  shadow-md p-4 w-full">
               <h3 className="text-lg font-bold mb-4">Status</h3>
               Card 2 content goes here

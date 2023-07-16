@@ -174,7 +174,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
             <TextField
               label="Category"
               name="toolCategories"
-              value={formData.toolCategories}
+              value={formData.toolCategories.toLocaleLowerCase()}
               onChange={handleChange}
               required
               className="w-full"
