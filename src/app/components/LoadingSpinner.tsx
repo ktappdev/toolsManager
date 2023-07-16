@@ -1,7 +1,9 @@
 import React from "react";
 import { ThreeCircles } from "react-loader-spinner";
+import usePreventZoom from "../lib/preventZoom";
 
 const LoadingSpinner = () => {
+  usePreventZoom();
   return (
     <div className="text-center">
       <ThreeCircles

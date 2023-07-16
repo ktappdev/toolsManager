@@ -1,8 +1,10 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import usePreventZoom from "../lib/preventZoom";
 
 const LoginButton = () => {
+  usePreventZoom();
   const { isLoaded, isSignedIn, user } = useUser();
   const router = useRouter();
   return (

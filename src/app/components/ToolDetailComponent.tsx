@@ -1,32 +1,38 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getToolDetail } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import LoadingSpinner from "./LoadingSpinner";
+import usePreventZoom from "../lib/preventZoom";
 
 interface ToolDetailProps {
   toolId: string;
 }
 
 const ToolDetail = (params: ToolDetailProps): JSX.Element => {
-  const queryClient = useQueryClient();
-
-  // useEffect(() => {
-  //   queryClient.invalidateQueries({ queryKey: ["toolDetail"] });
-  // }, [params.toolId]);
-
+  usePreventZoom();
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["toolDetail"],
+    queryKey: ["toolDetail", params.toolId],
     queryFn: () => getToolDetail(params.toolId),
+    staleTime: 0,
   });
 
+  const [showLargerImage, setShowLargerImage] = useState(false);
+
+  useEffect(() => {
+    setShowLargerImage(false);
+  }, [params.toolId]);
+
+  const handleImageClick = () => {
+    setShowLargerImage(!showLargerImage);
+  };
+
   if (isLoading) return <LoadingSpinner />;
-  // if (!data) return <LoadingSpinner />;
   if (isError) return <p>{error?.toString()}</p>;
 
-  // queryClient.invalidateQueries({ queryKey: ["toolDetail"] });
   return (
-    <div className=" flex flex-col items-center justify-center md:p-4 w-full ">
+    <div className="flex flex-col items-center justify-center md:p-4 w-full">
       <div
         id="all-items-container"
         className="flex flex-col gap-4 h-full md:pt-4 lg:pt-24 w-full"
@@ -58,7 +64,10 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
                 </ul>
               </div>
               {data?.toolImage && (
-                <div className="my-4 w-full flex justify-center items-center">
+                <div
+                  className="my-4 w-full flex justify-center items-center cursor-pointer"
+                  onClick={handleImageClick}
+                >
                   <Image
                     src={data?.toolImage}
                     alt={data?.toolName}
@@ -105,6 +114,28 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
           </div>
         </div>
       </div>
+
+      {showLargerImage && (
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-80"
+          onClick={handleImageClick}
+        >
+          <div className="max-w-full max-h-full">
+            <Image
+              src={data?.toolImage!}
+              alt={data?.toolName!}
+              fill
+              objectFit="contain"
+            />
+            <button
+              className="absolute top-4 right-4 text-white text-lg font-bold"
+              onClick={handleImageClick}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

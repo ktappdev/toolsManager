@@ -14,11 +14,13 @@ import addToolServerAction from "@/app/lib/addToolServerAction";
 import { useRouter } from "next/navigation";
 import { resizeImage } from "@/app/lib/clientFunctions";
 import { base64StringToBlob } from "blob-util";
+import usePreventZoom from "../lib/preventZoom";
 // import { useQueryClient } from "@tanstack/react-query";
 
 interface AddToolFormProps {}
 
 const NewItemForm: React.FC<AddToolFormProps> = () => {
+  usePreventZoom();
   const [toolImage, setToolImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [disableButton, setDisableButton] = useState(false);

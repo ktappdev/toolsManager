@@ -1,6 +1,7 @@
 "use server";
 import { prisma } from "./prismaClient";
 import { iTool } from "./interfaces";
+import { revalidatePath } from "next/cache";
 
 export const getTools = async (): Promise<iTool[]> => {
   const tools: iTool[] = await prisma.tools.findMany();
@@ -8,7 +9,6 @@ export const getTools = async (): Promise<iTool[]> => {
 };
 
 export const getToolDetail = async (id: string): Promise<iTool | null> => {
-  //
   const tool = await prisma.tools.findUnique({
     where: {
       id: id,
