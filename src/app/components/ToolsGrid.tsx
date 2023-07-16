@@ -16,7 +16,7 @@ const ToolsGrid = (): JSX.Element => {
   if (isError) return <p>{error?.toString()}</p>;
 
   return (
-    <div className="grid xxs:grid-cols-3 md:grid-cols-4 gap-4 px-2 h-[70%]">
+    <div className="grid xxs:grid-cols-3 md:grid-cols-4 gap-4 px-2 h-full mt-[11.5rem]">
       {data.map((tool) => (
         <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
           <div className=" p-2 hover:bg-gray-100 items-center flex flex-col justify-center w-full h-full shadow-slate-300 shadow-xl rounded-2xl">

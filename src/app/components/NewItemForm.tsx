@@ -172,7 +172,7 @@ const NewItemForm: React.FC<AddToolFormProps> = () => {
           />
           <div className="flex w-1/2 flex-row gap-2">
             <TextField
-              label="Category"
+              label="#Category"
               name="toolCategories"
               value={formData.toolCategories.toLocaleLowerCase()}
               onChange={handleChange}
