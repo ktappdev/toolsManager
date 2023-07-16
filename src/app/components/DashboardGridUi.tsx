@@ -8,8 +8,10 @@ import ForkRightIcon from "@mui/icons-material/ForkRight";
 import Link from "next/link";
 import vaultIcon from "/public/assets/app/vault.svg";
 import Image from "next/image";
+import usePreventZoom from "../lib/preventZoom";
 
 const GridUi = () => {
+  usePreventZoom();
   return (
     <div className="h-full w-full flex flex-col justify-start items-center">
       <div className="grid grid-cols-2 justify-center items-center w-full gap-4 px-8 py-4">

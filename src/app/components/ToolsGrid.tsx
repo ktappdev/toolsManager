@@ -1,12 +1,13 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getTools } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import usePreventZoom from "../lib/preventZoom";
 
-// Get QueryClient from the context
 const ToolsGrid = (): JSX.Element => {
+  usePreventZoom();
   const router = useRouter();
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["tools"],
@@ -27,7 +28,7 @@ const ToolsGrid = (): JSX.Element => {
                   alt={tool.toolName}
                   width={60}
                   height={60}
-                  className="object-contain items-center justify-center rounded-xl w-auto h-auto"
+                  className="object-contain items-center justify-center w-auto h-auto"
                 />
               </div>
             )}
