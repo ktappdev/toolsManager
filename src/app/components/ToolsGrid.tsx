@@ -20,19 +20,22 @@ const ToolsGrid = (): JSX.Element => {
     <div className="tools-grid grid xxs:grid-cols-3 md:grid-cols-5 gap-4 py-2 px-2 ">
       {data.map((tool) => (
         <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
-          <div className=" p-2 hover:bg-gray-100 items-center text-center flex flex-col justify-center w-full h-full shadow-slate-300 shadow-sm rounded-2xl">
+          <div className=" hover:bg-gray-100 items-center text-center flex flex-col justify-center w-full h-full shadow-slate-300 shadow-sm rounded-2xl">
             {tool.toolImage && (
-              <div className="relative mb-2 flex flex-1">
+              <div className=" relative mb-2 flex w-full h-full rounded-md">
                 <Image
                   src={tool.toolImage}
                   alt={tool.toolName}
-                  width={60}
-                  height={60}
-                  className="object-contain items-center justify-center w-auto h-auto"
+                  width={65}
+                  height={65}
+                  // objectFit="cover"
+                  className=" object-cover hover:object-contain items-center justify-center w-full h-20 "
                 />
               </div>
             )}
-            <h3 className="text-sm font-medium mb-2">{tool.toolName}</h3>
+            <div className="w-full ">
+              <h3 className="text-sm font-bold mb-2 text-slate-700">{tool.toolName}</h3>
+            </div>
           </div>
         </Link>
       ))}
