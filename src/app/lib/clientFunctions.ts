@@ -1,8 +1,8 @@
 "use client";
 export function resizeImage(
   base64Str: string,
-  maxWidth = 1000,
-  maxHeight = 1000
+  maxWidth = 800,
+  maxHeight = 800
 ) {
   return new Promise((resolve) => {
     let img = new Image();
@@ -33,7 +33,7 @@ export function resizeImage(
         canvas.height = height;
         let ctx = canvas.getContext("2d");
         ctx?.drawImage(img, 0, 0, width, height);
-        resolve(canvas.toDataURL("image/jpeg", 0.8));
+        resolve(canvas.toDataURL("image/jpeg", 0.7));
       } else {
         resolve(base64Str);
       }

@@ -3,7 +3,7 @@ import { ChangeEvent, use, useEffect, useState } from "react";
 import fakeData from "@/app/fakedata/data.json";
 import { useQuery, useMutation } from "@tanstack/react-query";
 // import { iReview } from "../util/Interfaces";
-import { apiUrl } from "../lib/apiUrl";
+import { apiUrl } from "../../lib/apiUrl";
 interface Suggestion {
   id: number;
   text: string;
