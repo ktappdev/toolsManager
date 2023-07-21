@@ -1,7 +1,7 @@
 "use server";
 import { prisma } from "./prismaClient";
 import { iTool } from "./interfaces";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
 export const getTools = async (): Promise<iTool[]> => {
   const tools: iTool[] = await prisma.tools.findMany();

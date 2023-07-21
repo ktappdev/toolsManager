@@ -21,18 +21,24 @@ const GridUi = () => {
             <div className="text-sm">New Item</div>
           </div>
         </Link>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
-          <SearchIcon />
-          <div className="text-sm">Find</div>
-        </div>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
-          <CallReceivedIcon />
-          <div className="text-sm">Receive Item</div>
-        </div>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
-          <CallMadeIcon />
-          <div className="text-sm">Lend Item</div>
-        </div>
+        <Link href="/search">
+          <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
+            <SearchIcon />
+            <div className="text-sm">Find</div>
+          </div>
+        </Link>
+        <Link href="/receivetool">
+          <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
+            <CallReceivedIcon />
+            <div className="text-sm">Receive Item</div>
+          </div>
+        </Link>
+        <Link href="/lendtool">
+          <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
+            <CallMadeIcon />
+            <div className="text-sm">Lend Item</div>
+          </div>
+        </Link>
         <Link href="/toolsvault">
           <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
             {/* <HomeRepairServiceIcon /> */}
@@ -41,10 +47,12 @@ const GridUi = () => {
             <div className="text-sm">Tools Vault</div>
           </div>
         </Link>
-        <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
-          <ForkRightIcon />
-          <div className="text-sm">Items Out</div>
-        </div>
+        <Link href="/itemsout">
+          <div className="flex flex-col justify-center items-center bg-neutral-100 w-full min-h-[100px] border-2 hover:cursor-pointer hover:bg-neutral-200 rounded-lg">
+            <ForkRightIcon />
+            <div className="text-sm">Items Out</div>
+          </div>
+        </Link>
       </div>
     </div>
   );
