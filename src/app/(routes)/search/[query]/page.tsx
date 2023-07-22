@@ -33,7 +33,7 @@ const SearchSuggestions = ({ params }: { params: { query: string } }) => {
       }
     }
     fetchData();
-  }, []);
+  });
 
   const handleInputChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newQuery = e.target.value;

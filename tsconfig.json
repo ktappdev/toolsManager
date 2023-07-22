@@ -28,8 +28,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/(routes)/newitem",
-    "src/app/_offline.js"
+    "src/app/(routes)/newtool",
+    "src/app/_offline.js",
+    "src/app/components/AddNewTool.jsx"
   ],
   "exclude": ["node_modules"]
 }
