@@ -53,7 +53,7 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
               <div className="mb-4">
                 <p className="text-sm text-gray-500 mb-2">Categories:</p>
                 <ul className="flex space-x-2">
-                  {data?.toolCategories.map((category) => (
+                  {data?.toolCategories.map((category: string) => (
                     <li
                       key={category}
                       className="bg-gray-200 px-2 py-1 rounded-md text-sm"
