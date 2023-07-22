@@ -4,11 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   try {
     const reviews = await prisma.tools.findMany({
-      where: { isInVault: true },
-    //   include: {
-    //     user: body.include.user,
-    //     item: body.include.item,
-    //   },
+      where: { isToolAvailable: true },
+      //   include: {
+      //     user: body.include.user,
+      //     item: body.include.item,
+      //   },
     });
     return NextResponse.json({
       success: true,
