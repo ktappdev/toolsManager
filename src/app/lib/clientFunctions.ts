@@ -33,7 +33,7 @@ export function resizeImage(
         canvas.height = height;
         let ctx = canvas.getContext("2d");
         ctx?.drawImage(img, 0, 0, width, height);
-        resolve(canvas.toDataURL("image/jpeg", 0.7));
+        resolve(canvas.toDataURL("image/jpeg", 0.5));
       } else {
         resolve(base64Str);
       }

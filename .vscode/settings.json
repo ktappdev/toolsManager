@@ -1,4 +1,7 @@
 {
   "dotenv.enableAutocloaking": true,
-  "cSpell.words": ["mytools"]
+  "cSpell.words": [
+    "Autosize",
+    "mytools"
+  ]
 }

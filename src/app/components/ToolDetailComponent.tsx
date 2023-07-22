@@ -35,7 +35,7 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
     <div className="flex flex-col items-center justify-center md:p-4 w-full">
       <div
         id="all-items-container"
-        className="flex flex-col gap-4 h-full md:pt-4 lg:pt-24 w-full"
+        className="flex flex-col gap-4 h-full md:pt-4 w-full"
       >
         <div
           id="top-row-container"

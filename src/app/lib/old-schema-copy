@@ -10,17 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id             String  @id @default(auto()) @map("_id") @db.ObjectId
-  username       String? @unique
-  email          String? @unique
-  nationalId     String? @unique
-  fullName       String?
-  addedByUser    Tools[] @relation("addedByUser")
-  lentOutByUser  Tools[] @relation("lentOutByUser")
-  returnedByUser Tools[] @relation("returnedByUser")
-}
-
 model Tools {
   id                String    @id @default(auto()) @map("_id") @db.ObjectId
   toolCreatedDate   DateTime  @default(now())
@@ -47,7 +36,7 @@ model Tools {
   toolLentOutDate   DateTime?
   toolLentOutBy     String?
   toolLentOutNotes  String?
-  toolLentOutTo     String? // Storing the name or national ID of the person borrowing the tool
+  toolLentOutTo     String?
   toolLentOutImage  String?
   toolReturned      Boolean   @default(false)
   toolReturnedDate  DateTime?
@@ -55,14 +44,4 @@ model Tools {
   toolReturnedNotes String?
   toolReturnedImage String[]
   toolReturnedTo    String[]
-  // Relation to the user who added the tool
-  addedByUser       Users?    @relation(fields: [addedByUserId], references: [id], name: "addedByUser")
-  addedByUserId     String?   @db.ObjectId
-  // // Relation to the user who lent out the tool
-  lentOutByUser     Users?    @relation(fields: [lentOutByUserId], references: [id], name: "lentOutByUser")
-  lentOutByUserId   String?   @db.ObjectId
-
-  // // Relation to the user who received the returned tool
-  returnedByUser   Users?  @relation(fields: [returnedByUserId], references: [id], name: "returnedByUser")
-  returnedByUserId String? @db.ObjectId
 }

@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c60ed72-e4dd-4959-9fa0-b628a4055637" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/search/[query]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/search/[query]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/NewItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/NewItemForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ToolsGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ToolsGrid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/lib/addToolServerAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lib/addToolServerAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/lib/imageResizeThenBase64.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lib/imageResizeThenBase64.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/lib/queries.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ToolDetailComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ToolDetailComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/lib/clientFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lib/clientFunctions.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +59,7 @@
       <workItem from="1687944451612" duration="2479000" />
       <workItem from="1688066120402" duration="101000" />
       <workItem from="1688068885633" duration="58000" />
+      <workItem from="1689996682539" duration="51000" />
     </task>
     <servers />
   </component>
