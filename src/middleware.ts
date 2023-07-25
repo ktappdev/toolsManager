@@ -1,9 +1,4 @@
-import {
-  authMiddleware,
-  useAuth,
-  currentUser,
-  redirectToSignIn,
-} from "@clerk/nextjs";
+import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 const whiteList = [
@@ -14,7 +9,7 @@ const whiteList = [
 ]; //"kendabeatmaker@gmail.com"
 export default authMiddleware({
   publicRoutes: ["/", "/sign-in", "/sign-up", "/not-authorized"],
-  afterAuth(auth, req) {
+  async afterAuth(auth, req) {
     // console.log(auth)
     if (
       auth.sessionClaims?.email &&
