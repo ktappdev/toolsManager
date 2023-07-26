@@ -40,7 +40,7 @@ const ToolsGrid = (): JSX.Element => {
         className=" hover:bg-gray-100 items-center text-center flex flex-col justify-center w-full h-full shadow-slate-300 shadow-sm rounded-2xl"
         id="add-tool"
       >
-        <h3 className="text-4xl font-bold mb-2 text-slate-700">+</h3>
+        <h3 className="text-6xl font-bold mb-2 text-slate-700">+</h3>
       </Link>
     </div>
   );
