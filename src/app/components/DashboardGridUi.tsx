@@ -3,14 +3,13 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import CallReceivedIcon from "@mui/icons-material/CallReceived";
 import CallMadeIcon from "@mui/icons-material/CallMade";
-import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
 import Link from "next/link";
 import vaultIcon from "/public/assets/app/vault.svg";
 import Image from "next/image";
 import usePreventZoom from "../lib/preventZoom";
 
-const GridUi = () => {
+const DashboardGridUi = () => {
   usePreventZoom();
   return (
     <div className="h-full w-full flex flex-col justify-start items-center">
@@ -58,4 +57,4 @@ const GridUi = () => {
   );
 };
 
-export default GridUi;
+export default DashboardGridUi 

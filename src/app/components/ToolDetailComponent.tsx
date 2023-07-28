@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getToolDetail } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import LoadingSpinner from "./LoadingSpinner";
@@ -10,12 +10,6 @@ interface ToolDetailProps {
   toolId: string;
 }
 
-const id = 1234;
-  const editToolUrl = {
-    pathname: "/edittool",
-    query: {},
-    id,
-  };
 
 const ToolDetail = (params: ToolDetailProps): JSX.Element => {
   usePreventZoom();
@@ -24,6 +18,11 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
     queryFn: () => getToolDetail(params.toolId),
     staleTime: 0,
   });
+
+    const editToolUrl = {
+    pathname: "/edittool",
+    query: {id : params.toolId},
+  };
 
   const [showLargerImage, setShowLargerImage] = useState(false);
 
