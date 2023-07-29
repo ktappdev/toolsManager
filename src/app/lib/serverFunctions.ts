@@ -1,7 +1,6 @@
 "use server";
 import { prisma } from "./prismaClient";
 import { iTool } from "./interfaces";
-// import { revalidatePath } from "next/cache";
 
 export const getTools = async () => {
   const tools = await prisma.tools.findMany() as unknown as iTool
@@ -26,4 +25,3 @@ export const writeToDb = async (data: any) => {
   return prismaResult;
 };
 
-// Function to resize the image

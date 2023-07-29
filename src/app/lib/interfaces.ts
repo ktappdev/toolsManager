@@ -1,5 +1,5 @@
 export interface iTool {
-  id: string;
+  id: string | null;
   toolCreatedDate: Date;
   toolDescription: string | null;
   toolImage: string | null;

@@ -7,7 +7,7 @@ function QueryProvider({ children }: React.PropsWithChildren) {
     new QueryClient({
       defaultOptions: {
         queries: {
-          staleTime: 60000,
+          staleTime: 0,
           refetchOnMount: true,
           refetchOnWindowFocus: true,
           refetchOnReconnect: true,
