@@ -11,14 +11,15 @@ datasource db {
 }
 
 model Users {
-  id             String  @id @default(auto()) @map("_id") @db.ObjectId
-  username       String? @unique
-  email          String? @unique
-  nationalId     String? @unique
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  username       String?  @unique
+  email          String?  @unique
+  nationalId     String?  @unique
   fullName       String?
-  addedByUser    Tools[] @relation("addedByUser")
-  lentOutByUser  Tools[] @relation("lentOutByUser")
-  returnedByUser Tools[] @relation("returnedByUser")
+  addedByUser    Tools[]  @relation("addedByUser")
+  lentOutByUser  Tools[]  @relation("lentOutByUser")
+  returnedByUser Tools[]  @relation("returnedByUser")
+  createdDate    DateTime @default(now()) 
 }
 
 model Tools {
@@ -56,11 +57,11 @@ model Tools {
   toolReturnedImage String[]
   toolReturnedTo    String[]
   // Relation to the user who added the tool
-  addedByUser       Users?    @relation(fields: [addedByUserId], references: [id], name: "addedByUser")
-  addedByUserId     String?   @db.ObjectId
+  addedByUser       Users?    @relation(fields: [addedByUserId], references: [email], name: "addedByUser")
+  addedByUserId     String?
   // // Relation to the user who lent out the tool
-  lentOutByUser     Users?    @relation(fields: [lentOutByUserId], references: [id], name: "lentOutByUser")
-  lentOutByUserId   String?   @db.ObjectId
+  lentOutByUser     Users?    @relation(fields: [lentOutByUserId], references: [email], name: "lentOutByUser")
+  lentOutByUserId   String?
 
   // // Relation to the user who received the returned tool
   returnedByUser   Users?  @relation(fields: [returnedByUserId], references: [id], name: "returnedByUser")

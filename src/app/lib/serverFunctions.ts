@@ -1,11 +1,10 @@
 "use server";
 import { prisma } from "./prismaClient";
 import { iTool } from "./interfaces";
-// import { revalidatePath } from "next/cache";
 
 export const getTools = async () => {
-  const tools = await prisma.tools.findMany();
-  console.log(typeof tools);
+  const tools = await prisma.tools.findMany() as unknown as iTool
+  JSON.parse(JSON.stringify(tools))
   return tools;
 };
 
@@ -14,7 +13,7 @@ export const getToolDetail = async (id: string) => {
     where: {
       id: id,
     },
-  });
+  }) as unknown as iTool
 
   return tool;
 };
@@ -22,8 +21,7 @@ export const getToolDetail = async (id: string) => {
 export const writeToDb = async (data: any) => {
   const prismaResult = await prisma.tools.create({
     data: data,
-  });
+  }) as unknown as iTool
   return prismaResult;
 };
 
-// Function to resize the image

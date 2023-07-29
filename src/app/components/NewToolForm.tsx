@@ -8,22 +8,17 @@ import React, {
 } from "react";
 import {
   TextField,
-  Button,
   IconButton,
   TextareaAutosize,
-  Select,
-  SelectChangeEvent,
 } from "@mui/material";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Image from "next/image";
 import addToolServerAction from "@/app/lib/addToolServerAction";
 import { useRouter } from "next/navigation";
 import { resizeImage } from "@/app/lib/clientFunctions";
-import { base64StringToBlob } from "blob-util";
 import usePreventZoom from "../lib/preventZoom";
-// import { useQueryClient } from "@tanstack/react-query";
-
+import { useUser } from "@clerk/nextjs";
+// import { currentUser } from "@clerk/nextjs/app-beta";
 interface AddToolFormProps {}
 
 const NewToolForm: React.FC<AddToolFormProps> = () => {
@@ -36,6 +31,8 @@ const NewToolForm: React.FC<AddToolFormProps> = () => {
     string | ArrayBuffer | null
   >("");
   // const queryClient = useQueryClient();
+  const { isLoaded, isSignedIn, user } = useUser();
+  // console.log(user);
 
   const [formData, setFormData] = useState({
     toolName: "Test Tool",
@@ -47,6 +44,8 @@ const NewToolForm: React.FC<AddToolFormProps> = () => {
     toolCondition: "",
     toolAccessories: "Case, Charger, Manual",
     toolModel: "Test Model",
+    addedByUserId: user?.primaryEmailAddress?.emailAddress,
+    // createdDate: new Date(),
   });
   const router = useRouter();
 

@@ -1,14 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getToolDetail } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import LoadingSpinner from "./LoadingSpinner";
 import usePreventZoom from "../lib/preventZoom";
-
+import Link from "next/link";
 interface ToolDetailProps {
   toolId: string;
 }
+
 
 const ToolDetail = (params: ToolDetailProps): JSX.Element => {
   usePreventZoom();
@@ -17,6 +18,11 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
     queryFn: () => getToolDetail(params.toolId),
     staleTime: 0,
   });
+
+    const editToolUrl = {
+    pathname: "/edittool",
+    query: {id : params.toolId},
+  };
 
   const [showLargerImage, setShowLargerImage] = useState(false);
 
@@ -112,6 +118,9 @@ const ToolDetail = (params: ToolDetailProps): JSX.Element => {
               {/* Add table body content */}
             </table>
           </div>
+        </div>
+        <div className="flex w-full justify-center items-center">
+         <Link href={editToolUrl} className=" text-red-500 px-4 font-bold border border-red-400">Edit This Tool</Link> 
         </div>
       </div>
 
