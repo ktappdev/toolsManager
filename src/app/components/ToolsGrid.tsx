@@ -4,6 +4,7 @@ import { getTools } from "@/app/lib/serverFunctions";
 import Image from "next/image";
 import Link from "next/link";
 import usePreventZoom from "../lib/preventZoom";
+import { iTool } from "../lib/interfaces";
 const ToolsGrid = (): JSX.Element => {
   usePreventZoom();
   const { data, isLoading, isError, error } = useQuery({
@@ -15,7 +16,7 @@ const ToolsGrid = (): JSX.Element => {
   //xxs:mt-[26rem]
   return (
     <div className="tools-grid grid xxs:grid-cols-3 md:grid-cols-5 gap-4 py-2 px-2 ">
-      {data.map((tool) => (
+      {data.map((tool:iTool) => (
         <Link href={`/tooldetail/${tool.id}`} key={tool.id}>
           <div className=" hover:bg-gray-100 items-center text-center flex flex-col justify-center w-full h-full shadow-slate-300 shadow-sm rounded-2xl">
             {tool.toolImage && (
