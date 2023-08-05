@@ -3,8 +3,7 @@ import { prisma } from "./prismaClient";
 import { iTool } from "./interfaces";
 
 export const getTools = async () => {
-  const tools = await prisma.tools.findMany() as unknown as iTool
-  JSON.parse(JSON.stringify(tools))
+  const tools = await prisma.tools.findMany() as unknown as iTool[]
   return tools;
 };
 
